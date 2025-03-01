@@ -1,8 +1,11 @@
 <script>
   import Navbar from '$lib/components/Navbar.svelte';
   import Header from '$lib/components/Header.svelte';
+  import Amenities from '$lib/components/Amenities.svelte';
+  import ContactInfo from '$lib/components/ContactInfo.svelte';
   import ApartmentCard from '$lib/components/ApartmentCard.svelte';
   import Footer from '$lib/components/Footer.svelte';
+    import Contact from '$lib/components/Contact.svelte';
 
   // Example data for featured apartments
   const featuredApartments = [
@@ -58,12 +61,14 @@
   ];
 </script>
 
-<main class="min-h-screen flex flex-col">
+<main class="min-h-screen flex flex-col bg-sky-50 pt-32 -mt-32">
   <Navbar />
   <Header />
 
   <!-- Main Content -->
-  <section class="flex-grow container mx-auto p-8">
+  <!-- <Amenities /> -->
+  <!-- Next section example -->
+  <section class="flex-grow container mx-auto  p-8">
     <h2 class="text-2xl font-bold mb-6">Featured Apartments</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {#each featuredApartments as apartment}
