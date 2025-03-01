@@ -12,7 +12,7 @@
         <img 
           src={heroImage}
           alt="Apartamenty w Krynicy Zdrój"
-          class="w-full h-[500px] lg:h-[600px] object-cover object-center"
+          class="w-full h-[600px] lg:h-[700px] object-cover object-center"
         />
         
         <!-- Text Overlay -->
