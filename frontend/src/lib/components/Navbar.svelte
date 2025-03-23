@@ -16,7 +16,7 @@
 <nav
   class="bg-white text-gray-800 sticky top-0 z-50 transition-all duration-300 {isScrolled ? 'py-3 h-16 shadow-md' : 'py-5 h-24'}"
 >
-  <div class="container mx-auto px-4 grid grid-cols-3 items-center h-full">
+  <div class="container mx-auto grid grid-cols-3 items-center h-full">
     <!-- Logo - Left Aligned -->
     <a
       href="/"

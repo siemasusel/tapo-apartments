@@ -4,7 +4,7 @@
 
 <!-- Hero Section -->
 <section class="relative bg-white pt-6 pb-16">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto">
     <div class="relative rounded-xl shadow-xl overflow-hidden">
       <!-- Image with Overlay -->
       <div class="relative">
