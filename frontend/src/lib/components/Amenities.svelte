@@ -33,7 +33,7 @@
 </script>
 
 <section class="">
-  <div class="container mx-auto px-4 py-10">
+  <div class="container mx-auto pb-12">
     <h2 class="text-3xl font-bold text-center mb-12">Udogodnienia dla naszych gosci</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -42,7 +42,7 @@
           <!-- Icon with enhanced glow effect -->
           <div class="relative mx-auto mb-4 w-16 h-16 flex items-center justify-center">
             <div
-              class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgb(var(--color-secondary))_0%,transparent_60%)] backdrop-blur-sm"
+              class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_0%,transparent_60%)] backdrop-blur-sm"
             ></div>
             <div
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_10%,transparent_70%)]"
