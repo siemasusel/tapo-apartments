@@ -12,8 +12,8 @@
 <Header />
 <Amenities />
 
-<div class="container mx-auto bg-grey px-18 py-10 rounded-2xl">
-  <h1 class="text-3xl text-center font-bold mb-10">Nasze apartamenty</h1>
+<div class="container mx-auto bg-grey px-18 py-12 rounded-2xl">
+  <h1 class="text-3xl text-center font-bold mb-12">Nasze apartamenty</h1>
   <div class="space-y-16">
     {#each data.apartments as apartment, index}
       <ApartmentCard {apartment} isEven={index % 2 === 1} />

@@ -1,4 +1,4 @@
-<footer class="bg-gray-800 text-white py-8">
+<footer class="bg-gray-800 text-white py-8 mt-8">
   <div class="container mx-auto text-center">
     <p>&copy; 2025 TAPO Apartmenty. All rights reserved.</p>
     <ul class="mt-4 flex justify-center space-x-6">

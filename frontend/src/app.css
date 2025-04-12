@@ -1,20 +1,30 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Freestyle";
+  src: url("/fonts/freestyle.ttf") format("truetype");
+}
+
 @theme {
   --font-primary: "Poppins", "serif";
+  --font-ubuntu: "Ubuntu", "sans-serif";
+  --font-freestyle: "Freestyle", "sans-serif";
   /* --font-primary: "Inter", "sans-serif"; */
 
-  /* --breakpoint-*: initial; */
-  /* --breakpoint-sm: 640px; */
-  /* --breakpoint-md: 768px; */
-  /* --breakpoint-lg: 1024px; */
-  /* --breakpoint-xl: 1280px; */
-  /* --breakpoint-2xl: 1440px; */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
   --color-black: #000000;
   --color-grey: #f4f4f4;
   /* --color-grey: #d9d9d9; */
   --color-primary: #4484ce;
+  --color-primary-superlight: #c6daf0;
+  --color-primary-light: #699cd7;
   --color-primary-dark: #3d76b9;
   /* --color-secondary: #f9cf00; */
   --color-secondary: #f19f4d;
+  --color-secondary-light: #f2a95f;
 }

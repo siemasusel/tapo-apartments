@@ -7,5 +7,7 @@ export const load: PageLoad = ({ params }) => {
 
   if (!apartment) error(404);
 
-  return { apartment };
+  return {
+    apartment: apartment,
+  };
 };
