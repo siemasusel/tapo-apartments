@@ -1,4 +1,5 @@
-import type { Icon } from "lucide-svelte";
+import { type Icon as IconType } from '@lucide/svelte';
+import type { IconNode } from 'lucide-svelte';
 
 export interface BedConfiguration {
   double: number;
@@ -7,12 +8,12 @@ export interface BedConfiguration {
 }
 
 export interface Amenity {
-  icon: typeof Icon;
+  icon?: typeof IconType;
+  iconNode?: IconNode;
   title: string;
 }
 
 export interface Apartment {
-  image: string;
   slug: string;
   title: string;
   capacity: number;

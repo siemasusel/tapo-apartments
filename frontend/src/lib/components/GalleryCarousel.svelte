@@ -1,21 +1,13 @@
 <script lang="ts">
-  // Import Svelte lifecycle functions and browser check
-  import { onMount, onDestroy } from "svelte";
-  import { browser } from "$app/environment";
+  import { onMount } from "svelte";
 
+  import { Maximize2 } from "lucide-svelte";
   // Splice imports
   import { Splide, SplideSlide } from "@splidejs/svelte-splide";
   import "@splidejs/svelte-splide/css";
-
-  // --- Lightgallery imports (remain the same) ---
-  import lightGallery from "lightgallery";
-  import type { LightGallery } from "lightgallery/lightgallery";
-  import "lightgallery/css/lightgallery.css";
-  import "lightgallery/css/lg-zoom.css";
-  import "lightgallery/css/lg-thumbnail.css";
-  import lgThumbnail from "lightgallery/plugins/thumbnail";
-  import lgZoom from "lightgallery/plugins/zoom";
-  import { Maximize2 } from "lucide-svelte";
+  // PhotoSwite imports
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
 
   export let slug: string;
 
@@ -27,7 +19,7 @@
   const allImages = import.meta.glob("/src/lib/assets/gallery/**/*.{jpg,png,webp}", {
     query: {
       enhanced: true,
-      w: "1500;500",
+      w: "1800;500",
       format: "webp",
     },
     eager: true,
@@ -56,41 +48,19 @@
     // height: "333px",
   };
 
-  let lgInstance: LightGallery | null = null;
-  const galleryId = `lightgallery--${slug}`; // Unique ID for the gallery container
-
-  onDestroy(() => {
-    // Cleanup lightGallery instance on component destruction
-    if (browser && lgInstance) {
-      // Add browser check here too for safety
-      console.log("Destroying lightGallery instance"); // Optional: for debugging
-      lgInstance.destroy();
-      lgInstance = null; // Clear the reference
-    }
-  });
+  const galleryId = `photoswipe--${slug}`; // Unique ID for the gallery container
 
   onMount(() => {
-    // Guard execution for browser environment only
-    if (browser) {
-      const element = document.getElementById(galleryId);
-      if (element) {
-        try {
-          // Initialize lightGallery
-          lgInstance = lightGallery(element, {
-            plugins: [lgThumbnail, lgZoom],
-            thumbnail: true,
-            zoom: true,
-            speed: 300,
-            selector: "a",
-            mode: "lg-fade",
-            download: false,
-            counter: true,
-          });
-        } catch (error) {
-          console.error("Error initializing lightGallery:", error);
-        }
-      }
-    }
+    let lightbox = new PhotoSwipeLightbox({
+      gallery: "#" + galleryId,
+      children: "a",
+      showHideAnimationType: "fade",
+      showAnimationDuration: 250,
+      hideAnimationDuration: 250,
+      // padding: { top: 20, bottom: 20, left: 20, right: 20 },
+      pswpModule: () => import("photoswipe"),
+    });
+    lightbox.init();
   });
 
   // --- Helper Functions ---
@@ -119,12 +89,20 @@
   }
 </script>
 
-<Splide id={galleryId} options={splideOptions} aria-label="Zdjęcie dla apartamentu {slug}">
+<Splide id={galleryId} class="pswp-gallery" options={splideOptions} aria-label="Zdjęcie dla apartamentu {slug}">
   {#each filteredImages as imgData, i}
     {@const mainSrc = getMainSrc(imgData)}
     {@const gridImgSrc = getGridImageUrl(imgData)}
     <SplideSlide class="h-80 flex justify-between">
-      <a href={mainSrc} class="group relative block h-full">
+      <a
+        href={mainSrc}
+        data-pswp-width={imgData.img.w}
+        data-pswp-height={imgData.img.h}
+        target="_blank"
+        rel="noreferrer"
+        class="group relative block h-full"
+      >
+        <!-- <a href={mainSrc} class="group relative block h-full"> -->
         <div class="relative h-full w-full">
           <img
             src={gridImgSrc}
@@ -134,7 +112,7 @@
           <!-- Hover overlay -->
           <div
             class="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-xl"
-          />
+          ></div>
           <!-- Loop icon -->
           <div
             class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -149,9 +127,3 @@
     </SplideSlide>
   {/each}
 </Splide>
-
-<style>
-  :global(.splide__arrow) {
-    z-index: 10;
-  }
-</style>
