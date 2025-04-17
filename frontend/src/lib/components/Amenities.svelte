@@ -1,5 +1,5 @@
 <script>
-  import { SquareParking, Bath, CookingPot, Wifi, TvMinimalPlay, MapPinHouse } from "lucide-svelte";
+  import { SquareParking, Bath, CookingPot, Wifi, TvMinimalPlay, MapPinHouse } from "@lucide/svelte";
 
   const amenities = [
     {
@@ -36,26 +36,30 @@
   <div class="container mx-auto pb-12">
     <h2 class="text-3xl font-bold text-center mb-12">Udogodnienia dla naszych gosci</h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4">
       {#each amenities as amenity}
-        <div class="p-6 bg-white rounded-lg border border-gray-200 hover:border-primary-500 transition-all text-center">
-          <!-- Icon with enhanced glow effect -->
-          <div class="relative mx-auto mb-4 w-16 h-16 flex items-center justify-center">
+        <div
+          class="p-3 md:p-5 xl:p-6 bg-white rounded-lg border border-gray-200 hover:border-primary-500 transition-all
+         flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 text-left sm:text-center"
+        >
+          <!-- Icon -->
+          <div
+            class="relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center sm:mb-4 sm:mx-auto"
+          >
             <div
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_0%,transparent_60%)] backdrop-blur-sm"
             ></div>
             <div
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_10%,transparent_70%)]"
             ></div>
-            <svelte:component this={amenity.icon} class="w-10 h-10 text-primary-500 relative z-10" />
+            <svelte:component this={amenity.icon} class="w-8 h-8 sm:w-10 sm:h-10 text-primary-500 relative z-10" />
           </div>
 
-          <h3 class="text-lg font-semibold text-gray-800 mb-2">
-            {amenity.title}
-          </h3>
-          <p class="text-sm text-gray-600 hidden sm:block">
-            {amenity.description}
-          </p>
+          <!-- Text -->
+          <div>
+            <h3 class="text-lg sm:text-lg font-semibold text-gray-800 mb-1 sm:mb-2">{amenity.title}</h3>
+            <p class="text-sm sm:text-sm text-gray-600 hidden sm:block">{amenity.description}</p>
+          </div>
         </div>
       {/each}
     </div>

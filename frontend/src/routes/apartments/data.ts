@@ -1,12 +1,10 @@
-import olaMainImage from "$lib/assets/ola-main.jpg";
-import aniaMainImage from "$lib/assets/ania-main.jpg";
 import type { Apartment } from "$lib/types";
 
-import { SquareParking, CookingPot, Wifi, TvMinimalPlay, ShowerHead, WashingMachine, Refrigerator, Microwave } from "lucide-svelte";
+import { SquareParking, CookingPot, Wifi, TvMinimalPlay, ShowerHead, WashingMachine, Microwave } from "@lucide/svelte";
+import { hairdryer } from "@lucide/lab";
 
 export const apartments: Apartment[] = [
   {
-    image: olaMainImage,
     slug: "ola",
     title: "Apartment Ola",
     capacity: 4,
@@ -25,7 +23,7 @@ export const apartments: Apartment[] = [
       },
       {
         icon: CookingPot,
-        title: "Aneks kuchenny",
+        title: "W pelni wyposazona kuchnia",
       },
       {
         icon: Microwave,
@@ -40,6 +38,10 @@ export const apartments: Apartment[] = [
         title: "Smart TV",
       },
       {
+        iconNode: hairdryer,
+        title: "Suszarka",
+      },
+      {
         icon: WashingMachine,
         title: "Dostep do pralki",
       },
@@ -50,7 +52,6 @@ export const apartments: Apartment[] = [
     ],
   },
   {
-    image: aniaMainImage,
     slug: "ania",
     title: "Apartment Ania",
     capacity: 4,
@@ -69,7 +70,7 @@ export const apartments: Apartment[] = [
       },
       {
         icon: CookingPot,
-        title: "Aneks kuchenny",
+        title: "W pelni wyposazona kuchnia",
       },
       {
         icon: Microwave,
@@ -82,6 +83,10 @@ export const apartments: Apartment[] = [
       {
         icon: TvMinimalPlay,
         title: "Telewizor ze SmartTV",
+      },
+      {
+        iconNode: hairdryer,
+        title: "Suszarka",
       },
       {
         icon: WashingMachine,

@@ -1,15 +1,28 @@
-<script>
-  export let apartment;
-  export let isEven; // Prop to determine if the card is even or odd
+<script lang="ts">
+  import type { Apartment } from "$lib/types";
+
+  export let apartment: Apartment;
+  export let isEven: boolean;
 
   import { Users, BedDouble, BedSingle, Sofa } from "lucide-svelte";
+
+  const mainImages = import.meta.glob("/src/lib/assets/gallery/**/1.{jpg,png,webp}", {
+    query: {
+      enhanced: true,
+      w: "900",
+      format: "webp",
+    },
+    eager: true,
+  });
+
+  $: imageSrc = mainImages[`/src/lib/assets/gallery/${apartment.slug}/1.jpg`].default.img.src;
 </script>
 
 <!-- Apartment Card Container -->
-<div class="flex flex-col md:flex-row w-full overflow-hidden min-h-[400px]">
+<div class="flex flex-col md:flex-row w-full overflow-hidden min-h-[350px]">
   <!-- Image Section (60% of the card) -->
   <div class={`w-full md:w-3/5 ${isEven ? "md:order-last" : "md:order-first"}`}>
-    <img src={apartment.image} alt={apartment.title} class="w-full h-full object-cover rounded-xl" />
+    <img src={imageSrc} alt={apartment.title} class="w-full h-full object-cover rounded-xl" />
   </div>
 
   <!-- Information Section (40% of the card) -->
@@ -21,13 +34,11 @@
 
       <!-- Icons Section -->
       <div class={`flex flex-wrap items-center gap-4 mb-6 ${isEven ? "justify-end" : "justify-start"}`}>
-        <!-- Capacity -->
         <div class="flex items-center space-x-1">
           <span class="text-xl align-middle">{apartment.capacity}</span>
           <Users class="w-6 h-6 mt-0.5" />
         </div>
 
-        <!-- Beds - Only show if count > 0 -->
         <div class="flex items-center gap-4">
           {#if apartment.beds.double > 0}
             <div class="flex items-center space-x-1">
@@ -66,14 +77,18 @@
     <!-- Buttons align to the bottom and right if isEven -->
     <div class={`mt-4 flex space-x-4 ${isEven ? "justify-end" : "justify-start"}`}>
       <div class="flex space-x-4">
-        <button
-          class="bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-400 transition-colors duration-300 justify-self-end"
-          >Wiecej</button
+        <a
+          href="/apartments/{apartment.slug}"
+          class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-dark transition-colors duration-300 justify-self-end"
         >
-        <button
-          class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-700 transition-colors duration-300 justify-self-end"
-          >Zarezerwuj</button
+          Więcej
+        </a>
+        <a
+          href="/reservation"
+          class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors duration-300 justify-self-end"
         >
+          Zarezerwuj
+        </a>
       </div>
     </div>
   </div>
