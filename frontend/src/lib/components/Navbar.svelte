@@ -3,7 +3,6 @@
   import { page } from "$app/state";
   import { goto } from "$app/navigation";
   import Logo from "$lib/icons/Logo.svelte";
-  import { tick } from "svelte";
 
   let isScrolled = false;
 
@@ -69,8 +68,7 @@
         // Wait until DOM updates
         setTimeout(() => {
           const section = document.getElementById(hash);
-          const nav = document.querySelector("nav");
-          const navHeight = nav?.clientHeight || 0;
+          const navHeight = isDesktop ? document.querySelector("nav")?.clientHeight || 0 : 0;
 
           if (section) {
             const sectionTop = section.getBoundingClientRect().top + window.scrollY;

@@ -2,8 +2,10 @@
   import "../app.css";
   import Navbar from "$lib/components/Navbar.svelte";
   import Footer from "$lib/components/Footer.svelte";
+  import type { LayoutProps } from "./$types";
 
-  let { children } = $props();
+  let { data, children }: LayoutProps = $props();
+  let { contactInformation } = data;
 </script>
 
 <main class="min-h-screen flex flex-col bg-white">
@@ -13,5 +15,5 @@
     {@render children()}
   </main>
 
-  <Footer />
+  <Footer {contactInformation} />
 </main>
