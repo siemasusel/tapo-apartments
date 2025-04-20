@@ -22,3 +22,15 @@ export interface Apartment {
   price: number;
   amenities: Amenity[];
 }
+
+export interface ContactInformation {
+  address: Address;
+  phone: string;
+  email: string;
+}
+
+export interface Address {
+  street: string;
+  zip: string;
+  city: string;
+}

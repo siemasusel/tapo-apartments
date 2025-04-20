@@ -12,8 +12,8 @@
 
   <GalleryCarousel {slug} />
 
-  <div class="flex flex-col md:flex-row gap-6 pb-6 items-center">
-    <div class="w-full md:w-[72%] flex flex-wrap items-center justify-evenly">
+  <div class="flex flex-col lg:flex-row gap-6 pb-6 items-center">
+    <div class="w-full lg:w-[72%] flex flex-wrap items-center justify-evenly">
       <div class="text-center">
         <div class="bg-gray-200 rounded-full p-3 mx-auto mb-2 w-fit">
           <Users class="size-6" />
@@ -70,7 +70,8 @@
     </div>
 
     <div
-      class="w-full md:w-[28%] bg-primary-light p-6 rounded-xl border border-primary-light flex flex-col justify-center items-center text-center mx-auto md:mx-0"
+      class="w-full lg:w-[28%] bg-primary-light p-6 rounded-xl flex flex-col justify-center
+      items-center text-center mx-auto lg:mx-0 shadow-2xl"
     >
       <div class="text-3xl font-bold mb-2">{apartment.price} zł</div>
       <div class="mb-4">za dobę</div>

@@ -7,6 +7,7 @@
   import type { PageProps } from "./$types";
 
   let { data }: PageProps = $props();
+  let { contactInformation, apartments } = data;
 
   import { onMount } from "svelte";
 
@@ -30,10 +31,10 @@
 <Amenities />
 
 <section id="apartments">
-  <div class="container mx-auto bg-grey px-18 py-12 rounded-2xl">
-    <h1 class="text-3xl text-center font-bold mb-12">Nasze apartamenty</h1>
+  <div class="container mx-auto lg:bg-grey lg:px-9 lg:py-6 xl:px-18 xl:py-12 rounded-2xl">
+    <h1 class="text-3xl text-center font-bold mb-6 xl:mb-12">Nasze apartamenty</h1>
     <div class="space-y-16">
-      {#each data.apartments as apartment, index}
+      {#each apartments as apartment, index}
         <ApartmentCard {apartment} isEven={index % 2 === 1} />
       {/each}
     </div>
@@ -41,5 +42,5 @@
 </section>
 
 <section id="contact">
-  <Contact />
+  <Contact {contactInformation} />
 </section>

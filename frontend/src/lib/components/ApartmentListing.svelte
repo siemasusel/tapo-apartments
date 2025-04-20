@@ -3,6 +3,17 @@
   export let apartment;
 
   import { Users, BedDouble, BedSingle, Sofa } from "lucide-svelte";
+
+  const images = import.meta.glob("/src/lib/assets/gallery/**/1.jpg", {
+    query: {
+      enhanced: true,
+      w: "900",
+      format: "webp",
+    },
+    eager: true,
+  });
+
+  $: imagePath = images[`/src/lib/assets/gallery/${apartment.slug}/1.jpg`].default.img.src as string;
 </script>
 
 <a
@@ -10,11 +21,11 @@
   class="block group relative h-96 w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl"
 >
   <!-- Darkened Image Overlay -->
-  <div class="absolute inset-0 bg-black/40 z-10 rounded-xl" />
+  <div class="absolute inset-0 bg-black/40 z-10 rounded-xl"></div>
 
   <!-- Apartment Image -->
   <img
-    src={apartment.image}
+    src={imagePath}
     alt={apartment.title}
     class="absolute inset-0 h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
   />

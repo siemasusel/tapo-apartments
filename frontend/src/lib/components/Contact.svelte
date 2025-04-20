@@ -1,5 +1,8 @@
-<script>
+<script lang="ts">
   import { Mail, Phone, MapPinHouse } from "lucide-svelte";
+  import type { ContactInformation } from "$lib/types";
+
+  export let contactInformation: ContactInformation;
 </script>
 
 <div class="container mx-auto py-16">
@@ -30,7 +33,10 @@
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Nasza lokalizacja</h3>
-          <p class="text-white">J. I. Kraszewskiego 74, 33-380 Krynica-Zdrój</p>
+          <p class="text-white">
+            {contactInformation.address.street}, {contactInformation.address.zip}
+            {contactInformation.address.city}
+          </p>
         </div>
       </div>
 
@@ -41,7 +47,7 @@
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
-          <a href="mailto:kontakt@tapoapartamenty.pl" class="text-white hover:underline">kontakt@tapoapartamenty.pl</a>
+          <a href="mailto:{contactInformation.email}" class="text-white hover:underline">{contactInformation.email}</a>
         </div>
       </div>
 
@@ -52,7 +58,7 @@
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Telefon</h3>
-          <a href="tel:+48543345543" class="text-white hover:underline">+48 543 345 543</a>
+          <a href="tel:{contactInformation.phone}" class="text-white hover:underline">{contactInformation.phone}</a>
         </div>
       </div>
     </div>

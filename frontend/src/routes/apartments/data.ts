@@ -19,15 +19,15 @@ export const apartments: Apartment[] = [
     amenities: [
       {
         icon: ShowerHead,
-        title: "Prywatna lazienka z prysznicem",
+        title: "Prywatna łazienka z prysznicem",
       },
       {
         icon: CookingPot,
-        title: "W pelni wyposazona kuchnia",
+        title: "W pełni wyposażona kuchnia",
       },
       {
         icon: Microwave,
-        title: "Mikrofalowka",
+        title: "Mikrofalówka",
       },
       {
         icon: Wifi,
@@ -43,11 +43,11 @@ export const apartments: Apartment[] = [
       },
       {
         icon: WashingMachine,
-        title: "Dostep do pralki",
+        title: "Dostęp do pralki",
       },
       {
         icon: SquareParking,
-        title: "Bezplatny parking",
+        title: "Bezpłatny parking",
       },
     ],
   },

@@ -6,7 +6,7 @@
 
   import { Users, BedDouble, BedSingle, Sofa } from "lucide-svelte";
 
-  const mainImages = import.meta.glob("/src/lib/assets/gallery/**/1.{jpg,png,webp}", {
+  const images = import.meta.glob("/src/lib/assets/gallery/**/1.jpg", {
     query: {
       enhanced: true,
       w: "900",
@@ -15,25 +15,27 @@
     eager: true,
   });
 
-  $: imageSrc = mainImages[`/src/lib/assets/gallery/${apartment.slug}/1.jpg`].default.img.src;
+  $: imagePath = images[`/src/lib/assets/gallery/${apartment.slug}/1.jpg`].default.img.src as string;
 </script>
 
 <!-- Apartment Card Container -->
-<div class="flex flex-col md:flex-row w-full overflow-hidden min-h-[350px]">
+<div class="bg-grey lg:bg-inherit flex flex-col lg:flex-row w-full overflow-hidden min-h-[350px]">
   <!-- Image Section (60% of the card) -->
-  <div class={`w-full md:w-3/5 ${isEven ? "md:order-last" : "md:order-first"}`}>
-    <img src={imageSrc} alt={apartment.title} class="w-full h-full object-cover rounded-xl" />
+  <div class={`w-full lg:w-3/5 ${isEven ? "lg:order-last" : "lg:order-first"}`}>
+    <img src={imagePath} alt={apartment.title} class="w-full h-full object-cover rounded-xl" />
   </div>
 
   <!-- Information Section (40% of the card) -->
-  <div class={`w-full md:w-2/5 px-8 flex flex-col ${isEven ? "text-right" : "text-left"}`}>
+  <div class={`w-full lg:w-2/5 px-8 flex flex-col text-center ${isEven ? "lg:text-right" : "lg:text-left"}`}>
     <!-- Flex-grow for content to stay at the top -->
     <div class="flex-grow">
       <!-- Title -->
-      <h2 class="text-2xl font-bold mb-4">{apartment.title}</h2>
+      <h2 class="text-2xl font-bold mb-4 mt-4 lg:mt-0">{apartment.title}</h2>
 
       <!-- Icons Section -->
-      <div class={`flex flex-wrap items-center gap-4 mb-6 ${isEven ? "justify-end" : "justify-start"}`}>
+      <div
+        class={`flex flex-wrap items-center gap-4 mb-6 justify-center ${isEven ? "lg:justify-end" : "lg:justify-start"}`}
+      >
         <div class="flex items-center space-x-1">
           <span class="text-xl align-middle">{apartment.capacity}</span>
           <Users class="w-6 h-6 mt-0.5" />
@@ -75,7 +77,7 @@
     </div>
 
     <!-- Buttons align to the bottom and right if isEven -->
-    <div class={`mt-4 flex space-x-4 ${isEven ? "justify-end" : "justify-start"}`}>
+    <div class={`mt-4 flex space-x-4 justify-center ${isEven ? "lg:justify-end" : "lg:justify-start"}`}>
       <div class="flex space-x-4">
         <a
           href="/apartments/{apartment.slug}"

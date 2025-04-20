@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
 
   import { Maximize2 } from "lucide-svelte";
-  // Splice imports
-  import { Splide, SplideSlide } from "@splidejs/svelte-splide";
+  // Splide imports
+  import { Splide, SplideSlide, type Options } from "@splidejs/svelte-splide";
   import "@splidejs/svelte-splide/css";
   // PhotoSwite imports
   import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -19,7 +19,7 @@
   const allImages = import.meta.glob("/src/lib/assets/gallery/**/*.{jpg,png,webp}", {
     query: {
       enhanced: true,
-      w: "1800;500",
+      w: "1800;600",
       format: "webp",
     },
     eager: true,
@@ -38,12 +38,24 @@
       };
     });
 
-  const splideOptions = {
+  const splideOptions: Options = {
     rewind: true,
     perPage: 3,
     perMove: 1,
     gap: "0.7rem",
     arrows: true,
+    breakpoints: {
+      1280: {
+        perPage: 2,
+        gap: "0.5rem",
+        // gap: 10,
+      },
+      768: {
+        perPage: 1,
+        // gap: 5,
+      },
+    },
+    padding: "none",
     // pagination: false,
     // height: "333px",
   };
@@ -64,13 +76,13 @@
   });
 
   // --- Helper Functions ---
-  // Gets the source for the image displayed in the grid (e.g., 500w)
+  // Gets the source for the image displayed in the grid (e.g., 600w)
   function getGridImageUrl(imgData: ImageMetadata): string {
     let gridImageUrl = imgData.img.src; // Fallback
     const webpSources = imgData.sources?.webp;
     if (webpSources) {
       const sourcesArray = webpSources.split(", ");
-      let entry = sourcesArray.find((s) => s.endsWith(" 500w"));
+      let entry = sourcesArray.find((s) => s.endsWith(" 600w"));
 
       if (entry) {
         gridImageUrl = entry.split(" ")[0];
@@ -93,7 +105,7 @@
   {#each filteredImages as imgData, i}
     {@const mainSrc = getMainSrc(imgData)}
     {@const gridImgSrc = getGridImageUrl(imgData)}
-    <SplideSlide class="h-80 flex justify-between">
+    <SplideSlide class="h-[400px] md:h-[350px] flex justify-center">
       <a
         href={mainSrc}
         data-pswp-width={imgData.img.w}
