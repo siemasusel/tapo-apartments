@@ -90,14 +90,13 @@
         gridImageUrl = imgData.img.src;
       }
     }
-    return gridImageUrl.startsWith("/") ? gridImageUrl : `/${gridImageUrl}`;
+    return gridImageUrl;
   }
 
   // Gets the source for the large image used in lightGallery
   function getMainSrc(imgData: ImageMetadata): string {
     // Assumes the default is the largest
-    const mainSrc = imgData.img.src;
-    return mainSrc.startsWith("/") ? mainSrc : `/${mainSrc}`;
+    return imgData.img.src;
   }
 </script>
 
