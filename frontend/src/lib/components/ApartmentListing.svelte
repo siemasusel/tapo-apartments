@@ -36,8 +36,8 @@
     <h2 class="text-3xl font-bold mb-4 text-center drop-shadow-lg">{apartment.title}</h2>
 
     <!-- Icons Container (original positioning) -->
-    <div class="mt-auto w-full flex justify-between items-center">
-      <div class="flex flex-wrap items-center gap-4">
+    <div class="mt-auto w-full flex justify-between items-end">
+      <div class="flex flex-wrap flex-col sm:flex-row gap-4">
         <!-- Capacity -->
         <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
           <Users class="w-5 h-5" />

@@ -19,18 +19,20 @@
 </script>
 
 <!-- Apartment Card Container -->
-<div class="bg-grey lg:bg-inherit flex flex-col lg:flex-row w-full overflow-hidden min-h-[350px]">
+<div class="flex flex-col lg:flex-row w-full overflow-hidden min-h-[350px]">
   <!-- Image Section (60% of the card) -->
   <div class={`w-full lg:w-3/5 ${isEven ? "lg:order-last" : "lg:order-first"}`}>
-    <img src={imagePath} alt={apartment.title} class="w-full h-full object-cover rounded-xl" />
+    <img src={imagePath} alt={apartment.title} class="w-full h-full object-cover rounded-t-xl lg:rounded-xl" />
   </div>
 
   <!-- Information Section (40% of the card) -->
-  <div class={`w-full lg:w-2/5 px-8 flex flex-col text-center ${isEven ? "lg:text-right" : "lg:text-left"}`}>
+  <div
+    class={`bg-grey xl:bg-inherit rounded-b-xl lg:rounded-none w-full lg:w-2/5 p-6 pb-8 lg:px-8 lg:py-0 flex flex-col text-center ${isEven ? "lg:text-right" : "lg:text-left"}`}
+  >
     <!-- Flex-grow for content to stay at the top -->
     <div class="flex-grow">
       <!-- Title -->
-      <h2 class="text-2xl font-bold mb-4 mt-4 lg:mt-0">{apartment.title}</h2>
+      <h2 class="text-2xl font-bold mb-4">{apartment.title}</h2>
 
       <!-- Icons Section -->
       <div

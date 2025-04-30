@@ -48,11 +48,9 @@
       1280: {
         perPage: 2,
         gap: "0.5rem",
-        // gap: 10,
       },
       768: {
         perPage: 1,
-        // gap: 5,
       },
     },
     padding: "none",
@@ -104,7 +102,7 @@
   {#each filteredImages as imgData, i}
     {@const mainSrc = getMainSrc(imgData)}
     {@const gridImgSrc = getGridImageUrl(imgData)}
-    <SplideSlide class="h-[400px] md:h-[350px] flex justify-center">
+    <SplideSlide class="h-[350px] flex justify-center">
       <a
         href={mainSrc}
         data-pswp-width={imgData.img.w}

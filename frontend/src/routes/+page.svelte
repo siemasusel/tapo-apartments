@@ -10,6 +10,8 @@
   let { contactInformation, apartments } = data;
 
   import { onMount } from "svelte";
+  import SectionTitle from "$lib/components/SectionTitle.svelte";
+  import { text } from "@sveltejs/kit";
 
   onMount(() => {
     const hash = window.location.hash.replace("#", "");
@@ -27,20 +29,22 @@
   });
 </script>
 
-<Header />
-<Amenities />
+<div class="px-2.5">
+  <Header />
+  <Amenities />
 
-<section id="apartments">
-  <div class="container mx-auto lg:bg-grey lg:px-9 lg:py-6 xl:px-18 xl:py-12 rounded-2xl">
-    <h1 class="text-3xl text-center font-bold mb-6 xl:mb-12">Nasze apartamenty</h1>
-    <div class="space-y-16">
-      {#each apartments as apartment, index}
-        <ApartmentCard {apartment} isEven={index % 2 === 1} />
-      {/each}
+  <section id="apartments">
+    <div class="container mx-auto lg:bg-grey lg:px-9 lg:py-6 xl:px-18 xl:py-12 rounded-2xl">
+      <SectionTitle text="Nasze apartamenty" />
+      <div class="space-y-8 lg:space-y-16">
+        {#each apartments as apartment, index}
+          <ApartmentCard {apartment} isEven={index % 2 === 1} />
+        {/each}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <Contact {contactInformation} />
-</section>
+  <section>
+    <Contact {contactInformation} />
+  </section>
+</div>

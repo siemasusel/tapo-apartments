@@ -1,9 +1,4 @@
-<script>
-  import heroImage from "$lib/assets/hero-image.jpg?enhanced";
-</script>
-
-<!-- Hero Section -->
-<section class="pt-5 pb-12">
+<section class="mt-5 mb-8 xl:mb-12">
   <div class="container mx-auto">
     <div class="relative rounded-xl shadow-xl overflow-hidden">
       <!-- Image with Overlay -->
@@ -13,7 +8,7 @@
           src="$lib/assets/hero-image.jpg?w=1440;768"
           sizes="(min-width:1440px) 1440px, (min-width:768px) 768px"
           alt="Apartamenty w Krynicy Zdrój"
-          class="w-full h-[500px] lg:h-[700px] object-cover object-center"
+          class="w-full h-[450px] md:h-[500px] lg:h-[700px] object-cover object-center"
         />
 
         <!-- Text Overlay -->
