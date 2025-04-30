@@ -98,7 +98,7 @@
 </script>
 
 <nav
-  class="bg-white text-gray-800 relative lg:sticky lg:top-0 z-50 transition-all duration-300 {isScrolled
+  class="bg-white px-2.5 text-gray-800 relative lg:sticky lg:top-0 z-50 transition-all duration-300 {isScrolled
     ? 'h-16 shadow-md'
     : 'h-24'}"
 >
@@ -133,22 +133,13 @@
 
     <!-- Mobile Menu Button & Reservation Button Container -->
     <div class="flex items-center justify-end lg:justify-center gap-4">
-      <!-- Reservation Button - Centered on mobile -->
-      <a
-        href="/reservation"
-        class="lg:hidden bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors duration-300
-        whitespace-nowrap mx-auto"
-      >
-        Zarezerwuj
-      </a>
-
       <button
         class="lg:hidden p-2 focus:outline-none ml-1"
         on:click={() => (isOpen = !isOpen)}
         aria-label="Menu toggle"
       >
         <svg
-          class="w-8 h-8 text-black"
+          class="w-9 h-9 text-black"
           viewBox="0 0 24 24"
           stroke="currentColor"
           fill="none"
@@ -213,6 +204,15 @@
               </a>
             </li>
           {/each}
+          <li>
+            <a
+              href="/reservation"
+              on:click={() => (isOpen = false)}
+              class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors duration-300 whitespace-nowrap"
+            >
+              Zarezerwuj
+            </a>
+          </li>
         </ul>
       </div>
     {/if}

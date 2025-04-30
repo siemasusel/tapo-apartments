@@ -5,7 +5,7 @@
   export let contactInformation: ContactInformation;
 </script>
 
-<div class="container mx-auto py-16">
+<div class="container mx-auto py-8 md:py-12">
   <div class="flex flex-col lg:flex-row gap-8 rounded-xl overflow-hidden">
     <!-- Left Side - Google Map -->
     <div class="w-full lg:w-1/2 h-96">
@@ -23,7 +23,7 @@
     </div>
 
     <!-- Right Side - Contact Information -->
-    <div class="w-full lg:w-1/2 bg-primary p-8 rounded-xl flex flex-col justify-center">
+    <div id="contact" class="w-full lg:w-1/2 bg-primary p-8 rounded-xl flex flex-col justify-center">
       <h2 class="text-3xl font-bold text-white mb-6">Skontaktuj się z nami</h2>
 
       <!-- Address -->

@@ -7,6 +7,6 @@
   let { contactInformation } = data;
 </script>
 
-<main class="container text-center mx-auto py-12">
+<div class="container px-2.5 text-center mx-auto py-12">
   <Reservation {contactInformation} />
-</main>
+</div>

@@ -8,11 +8,11 @@
   const { apartment } = data;
 </script>
 
-<div class="bg-grey">
-  <main class="container mx-auto">
+<div class="bg-grey px-2.5">
+  <div class="container mx-auto">
     <ApartmentHero {apartment} />
-  </main>
+  </div>
 </div>
-<main class="container mx-auto">
+<div class="container mx-auto px-2.5">
   <ApartmentInfo {apartment} />
-</main>
+</div>

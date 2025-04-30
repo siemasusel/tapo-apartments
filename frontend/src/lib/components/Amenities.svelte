@@ -1,5 +1,6 @@
 <script>
   import { SquareParking, Bath, CookingPot, Wifi, TvMinimalPlay, MapPinHouse } from "@lucide/svelte";
+  import SectionTitle from "./SectionTitle.svelte";
 
   const amenities = [
     {
@@ -32,9 +33,9 @@
   ];
 </script>
 
-<section class="">
-  <div class="container mx-auto pb-12">
-    <h2 class="text-3xl font-bold text-center mb-12">Udogodnienia dla naszych gości</h2>
+<section>
+  <div class="container mx-auto mb-8 xl:mb-12">
+    <SectionTitle text="Udogodnienia dla naszych gości" />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4">
       {#each amenities as amenity}
