@@ -13,7 +13,9 @@
   <GalleryCarousel {slug} />
 
   <div class="flex flex-col lg:flex-row gap-6 pb-6 items-center">
-    <div class="w-full lg:w-[72%] flex flex-wrap items-center justify-evenly">
+    <!-- Original icons container with hidden bathroom/kitchen on mobile -->
+    <div class="w-full lg:w-[72%] flex flex-wrap justify-around sm:justify-evenly">
+      <!-- Capacity -->
       <div class="text-center">
         <div class="bg-gray-200 rounded-full p-3 mx-auto mb-2 w-fit">
           <Users class="size-6" />
@@ -52,6 +54,27 @@
         </div>
       {/if}
 
+      <!-- Hidden on mobile -->
+      <div class="text-center hidden sm:block">
+        <div class="bg-gray-200 rounded-full p-3 mx-auto mb-2 w-fit">
+          <ShowerHead class="size-6" />
+        </div>
+        <div>1</div>
+        <div>Łazienka</div>
+      </div>
+
+      <div class="text-center hidden sm:block">
+        <div class="bg-gray-200 rounded-full p-3 mx-auto mb-2 w-fit">
+          <CookingPot class="size-6" />
+        </div>
+        <div>1</div>
+        <div>Kuchnia</div>
+      </div>
+    </div>
+
+    <!-- Mobile-only bathroom/kitchen row -->
+    <!-- <div class="w-full flex sm:hidden justify-center gap-8"> -->
+    <div class="w-full flex sm:hidden justify-evenly">
       <div class="text-center">
         <div class="bg-gray-200 rounded-full p-3 mx-auto mb-2 w-fit">
           <ShowerHead class="size-6" />
@@ -69,9 +92,9 @@
       </div>
     </div>
 
+    <!-- Price box -->
     <div
-      class="w-full lg:w-[28%] bg-primary-light p-6 rounded-xl flex flex-col justify-center
-      items-center text-center mx-auto lg:mx-0 shadow-2xl"
+      class="w-full lg:w-[28%] bg-primary-light p-6 rounded-xl flex flex-col justify-center items-center text-center mx-auto lg:mx-0 shadow-2xl"
     >
       <div class="text-3xl font-bold mb-2">{apartment.price} zł</div>
       <div class="mb-4">za dobę</div>
