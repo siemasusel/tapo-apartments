@@ -40,7 +40,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4">
       {#each amenities as amenity}
         <div
-          class="p-3 md:p-5 xl:p-6 bg-white rounded-lg border border-gray-200 hover:border-primary-500 transition-all
+          class="p-2 sm:p-3 md:p-5 xl:p-6 bg-white rounded-lg border border-gray-200 hover:border-primary-500 transition-all
          flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 text-left sm:text-center"
         >
           <!-- Icon -->
@@ -58,7 +58,7 @@
 
           <!-- Text -->
           <div>
-            <h3 class="text-lg sm:text-lg font-semibold text-gray-800 mb-1 sm:mb-2">{amenity.title}</h3>
+            <h3 class="text-lg sm:text-lg font-semibold text-gray-800 sm:mb-2">{amenity.title}</h3>
             <p class="text-sm sm:text-sm text-gray-600 hidden sm:block">{amenity.description}</p>
           </div>
         </div>
