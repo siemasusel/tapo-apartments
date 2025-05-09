@@ -19,12 +19,36 @@
   --breakpoint-2xl: 1440px;
   --color-black: #000000;
   --color-grey: #f4f4f4;
-  /* --color-grey: #d9d9d9; */
   --color-primary: #4484ce;
   --color-primary-superlight: #b4cdeb;
   --color-primary-light: #699cd7;
   --color-primary-dark: #3d76b9;
+  /* --color-primary: #1e88e5; */
+  /* --color-primary-superlight: #90caf9; */
+  /* --color-primary-light: #42a5f5; */
+  /* --color-primary-dark: #1565c0; */
   /* --color-secondary: #f9cf00; */
   --color-secondary: #f19f4d;
   --color-secondary-light: #f2a95f;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0px;
+    }
+    to {
+      height: var(--bits-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--bits-accordion-content-height);
+    }
+    to {
+      height: 0px;
+    }
+  }
 }

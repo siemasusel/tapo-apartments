@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Apartment } from "$lib/types";
   import { Icon } from "@lucide/svelte";
+  import FaqSection from "./FAQSection.svelte";
   let { apartment } = $props<{ apartment: Apartment }>();
 
   const half = Math.ceil(apartment.amenities.length / 2);
@@ -52,5 +53,13 @@
         {/each}
       </div>
     </div>
+  </section>
+
+  <hr class="border-t-2 border-gray-200" />
+
+  <section>
+    <h2 class="text-3xl font-semibold mb-8">Dodatkowe informacje</h2>
+
+    <FaqSection />
   </section>
 </div>
