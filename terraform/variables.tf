@@ -12,16 +12,14 @@ variable "project_name" {
   default     = "tapo-apartamenty" # Change to a unique name
 }
 
-# Optional: Define a custom domain name
 variable "custom_domain_name" {
-  description = "Optional: Your custom domain name (e.g., www.example.com). If provided, you'll need an ACM certificate."
-  type        = string
-  default     = null # Set to your domain if you have one and a corresponding ACM certificate
+  description = "The custom domain names for the CloudFront distribution (e.g., example.com, www.example.com)"
+  type        = list(string)
+  default     = []
 }
 
-# Optional: Define the ARN of the ACM certificate for the custom domain
 variable "acm_certificate_arn" {
-  description = "Optional: The ARN of the ACM certificate for the custom domain name. Required if custom_domain_name is set."
+  description = "The ARN of the ACM certificate for the custom domain (e.g., arn:aws:acm:us-east-1:123456789012:certificate/abcdef-123-456)"
   type        = string
-  default     = null # Set to your certificate ARN if using a custom domain
+  default     = null # Set a default of null if not always used
 }

@@ -4,7 +4,7 @@
 
   const amenities = [
     {
-      title: "Darmowy Parking",
+      title: "Bezpłatny Parking",
       icon: SquareParking,
       description: "Miejsce parkingowe dostępne bez dodatkowych opłat, tuż obok apartamentu.",
     },
@@ -18,7 +18,7 @@
       icon: CookingPot,
       description: "Kuchnia z niezbędnymi sprzętami i naczyniami do przygotowywania posiłków.",
     },
-    { title: "Darmowe WiFi", icon: Wifi, description: "Bezpłatny dostęp do szybkiego internetu w całym apartamencie." },
+    { title: "Szybkie WiFi", icon: Wifi, description: "Bezpłatny dostęp do szybkiego internetu w całym apartamencie." },
     {
       title: "Smart TV",
       icon: TvMinimalPlay,

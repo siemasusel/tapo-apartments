@@ -21,6 +21,10 @@
             {contactInformation.email}
           </a>
         </p>
+        <p class="mb-1.5 text-gray-400">
+          {contactInformation.address.street}, {contactInformation.address.zip}
+          {contactInformation.address.city}
+        </p>
       </div>
 
       <!-- Quick Links -->
@@ -29,6 +33,7 @@
         <ul class="space-y-1.5">
           <li><a href="/" class="hover:text-gray-100 transition-colors">Strona główna</a></li>
           <li><a href="/apartments" class="hover:text-gray-100 transition-colors">Apartamenty</a></li>
+          <li><a href="/reservation" class="hover:text-gray-100 transition-colors">Zarezerwuj</a></li>
         </ul>
       </div>
 
@@ -45,7 +50,7 @@
 
     <!-- Copyright & Legal -->
     <div class="pt-4 lg:pt-6 mt-4 lg:mt-6 border-t border-gray-700 text-center">
-      <p class="text-gray-500">&copy; 2025 TAPO Apartmenty. Wszystkie prawa zastrzeżone.</p>
+      <p class="text-gray-400">&copy; 2025 TAPO Apartmenty. Wszystkie prawa zastrzeżone.</p>
       <!-- <ul class="mt-3 flex justify-center space-x-4"> -->
       <!--   <li> -->
       <!--     <a href="/privacy" class="text-gray-400 hover:text-gray-100 transition-colors">Polityka prywatności</a> -->

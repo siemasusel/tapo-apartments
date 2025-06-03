@@ -1,6 +1,6 @@
 import type { Apartment } from "$lib/types";
 
-import { SquareParking, CookingPot, Wifi, TvMinimalPlay, ShowerHead, WashingMachine, Microwave } from "@lucide/svelte";
+import { SquareParking, CookingPot, Wifi, TvMinimalPlay, ShowerHead, WashingMachine, Microwave, Gamepad, Puzzle, Dice5, Book, BookOpen } from "@lucide/svelte";
 import { hairdryer } from "@lucide/lab";
 
 export const apartments: Apartment[] = [
@@ -14,7 +14,7 @@ export const apartments: Apartment[] = [
       sofa: 1,
     },
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.",
+      "Apartment Ola to idealna propozycja odpoczynku dla par. W apartamencie czeka na Was stylowe wnętrze z akcentami folklorystycznymi, w pełni wyposażony aneks kuchenny z mikrofalówką i ekspresem kapsułkowym, rozkładana kanapa, telewizor z opcją Smart TV, przytulna sypialnia oraz łazienka z prysznicem. Proponujemy także wybór książek oraz gier, a także możliwość pozostawienia sprzętu narciarskiego w części wspólnej.",
     price: 360,
     amenities: [
       {
@@ -49,6 +49,10 @@ export const apartments: Apartment[] = [
         icon: SquareParking,
         title: "Bezpłatny parking",
       },
+      {
+        icon: BookOpen,
+        title: "Książki i gry planszowe",
+      }
     ],
   },
   {
@@ -61,8 +65,8 @@ export const apartments: Apartment[] = [
       sofa: 0,
     },
     description:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
-    price: 420,
+      "Apartament Ania sprawdzi się dla rodzin, które cenią sobie przestronne i komfortowe wnętrza. W apartamencie znajduje się łóżko dwuosobowe oraz osobna sypialnia z dwoma łóżkami jednoosobowymi. Do Waszej dyspozycji znajduje się w pełni wyposażona kuchnia wraz z mikrofalówką, ekspresem kapsułkowym, dwoma biurkami, telewizorem z opcją Smart TV oraz łazienką z prysznicem. W części wspólnej znajduje się narciarnia oraz kącik z książkami i grami. ",
+    price: 450,
     amenities: [
       {
         icon: ShowerHead,

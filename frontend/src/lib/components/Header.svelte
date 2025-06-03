@@ -13,12 +13,14 @@
 
         <!-- Text Overlay -->
         <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-4">
-          <div class="max-w-2xl space-y-6">
+          <div class="max-w-3xl space-y-6">
             <h1 id="about" class="text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-md">
-              Odpocznij w Krynicy Zdrój
+              Zrelaksuj się w Krynicy-Zdroju
             </h1>
             <p class="text-lg lg:text-xl text-white/90 lg:px-8 drop-shadow">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quas placeat voluptatem ratione.
+              Zapraszamy do wyjątkowych apartamentów, w których odpoczynek i regeneracja ma wiele wymiarów - od
+              wygodnych łóżek, przez lecznicze wody aż po aktywny wypoczynek. TAPO Apartamenty to rodzinna firma, w
+              której stawiamy na wysoki standard, wygodę i indywidualne podejście do potrzeb każdego gościa.
             </p>
           </div>
         </div>
