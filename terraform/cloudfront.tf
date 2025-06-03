@@ -6,7 +6,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_root_object = "index.html" # Serve index.html for the root URL
 
   # If a custom domain is provided, use it
-  aliases = var.custom_domain_name != null ? [var.custom_domain_name] : []
+  aliases = var.custom_domain_name
 
   # Origin configuration - pointing to the S3 bucket
   origin {
@@ -38,9 +38,15 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     min_ttl                = 0
     default_ttl            = 3600  # Cache objects for 1 hour by default
     max_ttl                = 86400 # Cache objects for up to 1 day
+    compress               = true
 
-    # Compress objects automatically (e.g., gzip, brotli)
-    compress = true
+    dynamic "function_association" {
+      for_each = aws_cloudfront_function.naked_domain_redirect # This will be an empty list or a list with one item
+      content {
+        event_type   = "viewer-request"
+        function_arn = function_association.value.arn
+      }
+    }
   }
 
   # Price class - controls the geographic scope of edge locations
@@ -58,12 +64,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   # Viewer certificate configuration
   viewer_certificate {
-    # Use the default CloudFront certificate if no custom domain is provided
-    # Otherwise, use the specified ACM certificate
     cloudfront_default_certificate = var.custom_domain_name == null ? true : false
-    acm_certificate_arn            = var.custom_domain_name != null ? var.acm_certificate_arn : null
-    ssl_support_method             = var.custom_domain_name != null ? "sni-only" : null # Use SNI for custom domains
-    minimum_protocol_version       = "TLSv1.2_2021"                                     # Use a modern TLS version
+    acm_certificate_arn            = var.custom_domain_name != null ? aws_acm_certificate_validation.cert_validation[0].certificate_arn : null # Use the ARN from the validated certificate
+    ssl_support_method             = var.custom_domain_name != null ? "sni-only" : null
+    minimum_protocol_version       = "TLSv1.2_2021"
   }
 
   # Custom error response for 403 and 404 errors
