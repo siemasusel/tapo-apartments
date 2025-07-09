@@ -27,6 +27,7 @@
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta name="robots" content="noindex, nofollow" />
 
   <link rel="canonical" href={canonicalUrl} />
 </svelte:head>

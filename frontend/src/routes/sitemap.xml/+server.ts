@@ -39,13 +39,6 @@ export const GET: RequestHandler = async () => {
     </url>
 
     <url>
-        <loc>${baseUrl}/apartments</loc>
-        <lastmod>${currentDate}</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <url>
         <loc>${baseUrl}/apartments/ola</loc>
         <lastmod>${currentDate}</lastmod>
         <changefreq>daily</changefreq>
