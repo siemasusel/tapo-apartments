@@ -17,18 +17,21 @@ COMPOSE_FILE = $(COMPOSE_DIR)/docker-compose.yml
 DYNAMODB_ENDPOINT = http://localhost:8001
 TABLE_NAME = ApartmentsData
 
-.PHONY: all build sync invalidate deploy terraform terraform-plan run-frontend run-backend generate clean_generated_dir clean help
+.PHONY: all sync invalidate deploy terraform terraform-plan build-frontend run-frontend build-backend run-backend generate clean_generated_dir clean help
 
 # Default action
 all: deploy
 
 # Build the frontend
-build:
+build-frontend:
 	cd frontend && npm run build
 
 # Run local dev server
 run-frontend:
 	cd frontend && npm run dev -- --open
+
+build-backend:
+	cd backend && ./build.sh
 
 run-backend: init-dynamodb
 	cd backend && ./run.sh
