@@ -33,7 +33,7 @@
         <ul class="space-y-1.5">
           <li><a href="/" class="hover:text-gray-100 transition-colors">Strona główna</a></li>
           <li><a href="/apartments" class="hover:text-gray-100 transition-colors">Apartamenty</a></li>
-          <li><a href="/reservation" class="hover:text-gray-100 transition-colors">Zarezerwuj</a></li>
+          <li><a href="/reservation" class="hover:text-gray-100 transition-colors">Rezerwacja</a></li>
         </ul>
       </div>
 

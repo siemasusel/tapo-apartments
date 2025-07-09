@@ -1,0 +1,174 @@
+openapi: 3.1.1
+info:
+  description: API for TAPO Apartments website
+  title: TAPO Apartments API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /api/apartments/{slug}/availability:
+    get:
+      description: Retrieve availability for the apartment identified by slug.
+      parameters:
+      - description: Unique identifier (slug) for the apartment
+        explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApartmentAvialabilityResponse"
+          description: List of unavailable date ranges
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Apartment not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal server error
+      summary: Get availability for an apartment
+      tags:
+      - Apartments
+  /admin/apartments/{slug}/reload-external-availability:
+    post:
+      description: Reload and return external availability for an apartment. Requires
+        admin API key.
+      parameters:
+      - description: Unique identifier (slug) for the apartment
+        explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Admin API key
+        explode: false
+        in: header
+        name: X-API-Key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExternalAvailabilityResponse"
+          description: External availability info
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Unauthorized – invalid or missing API key
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Apartment not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal server error
+      summary: Reload external availability
+      tags:
+      - Admin
+components:
+  schemas:
+    ApartmentAvialabilityResponse:
+      properties:
+        slug:
+          description: Apartment slug
+          type: string
+        externalUnavailableDates:
+          description: List of external unavailable date ranges
+          items:
+            $ref: "#/components/schemas/UnavailableDateRange"
+          type: array
+        internalUnavailableDates:
+          description: List of internal unavailable date ranges
+          items:
+            $ref: "#/components/schemas/UnavailableDateRange"
+          type: array
+        externalLastSyncedAt:
+          description: Date of the last sync with external system
+          example: 2025-06-14T17:32:28Z
+          format: date-time
+          type: string
+      required:
+      - externalLastSyncedAt
+      - externalUnavailableDates
+      - internalUnavailableDates
+      - slug
+    ExternalAvailabilityResponse:
+      properties:
+        slug:
+          description: Apartment slug
+          type: string
+        unavailableDates:
+          description: List of unavailable date ranges from external source
+          items:
+            $ref: "#/components/schemas/UnavailableDateRange"
+          type: array
+        lastSyncedAt:
+          description: Time of last successful sync
+          example: 2025-06-14T17:32:28Z
+          format: date-time
+          type: string
+        source:
+          description: Source of the external data
+          enum:
+          - website
+          - bookingcom
+          example: bookingcom
+          type: string
+      required:
+      - lastSyncedAt
+      - slug
+      - source
+      - unavailableDates
+    UnavailableDateRange:
+      properties:
+        startDate:
+          description: Start date of the unavailable period
+          example: 2025-06-14
+          format: date
+          type: string
+        endDate:
+          description: End date of the unavailable period
+          example: 2025-06-16
+          format: date
+          type: string
+        source:
+          description: "Source of the unavailable dates (e.g., \"website\", \"bookingcom\"\
+            )"
+          enum:
+          - website
+          - bookingcom
+          example: website
+          type: string
+      required:
+      - endDate
+      - source
+      - startDate
+    ErrorResponse:
+      properties:
+        error:
+          example: Apartment not found
+          type: string

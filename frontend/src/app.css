@@ -30,25 +30,4 @@
   /* --color-secondary: #f9cf00; */
   --color-secondary: #f19f4d;
   --color-secondary-light: #f2a95f;
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  @keyframes accordion-down {
-    from {
-      height: 0px;
-    }
-    to {
-      height: var(--bits-accordion-content-height);
-    }
-  }
-
-  @keyframes accordion-up {
-    from {
-      height: var(--bits-accordion-content-height);
-    }
-    to {
-      height: 0px;
-    }
-  }
 }

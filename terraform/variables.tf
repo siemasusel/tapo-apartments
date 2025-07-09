@@ -5,6 +5,8 @@ variable "aws_region" {
   default     = "eu-central-1" # Change to your preferred region
 }
 
+data "aws_caller_identity" "current" {}
+
 # Define a unique name prefix for your resources
 variable "project_name" {
   description = "A unique name prefix for the S3 bucket and other resources."
@@ -18,8 +20,18 @@ variable "custom_domain_name" {
   default     = []
 }
 
-variable "acm_certificate_arn" {
-  description = "The ARN of the ACM certificate for the custom domain (e.g., arn:aws:acm:us-east-1:123456789012:certificate/abcdef-123-456)"
-  type        = string
-  default     = null # Set a default of null if not always used
+variable "tapo_ola_calendar_url" {
+  type      = string
+  sensitive = true
 }
+
+variable "tapo_ania_calendar_url" {
+  type      = string
+  sensitive = true
+}
+
+variable "tapo_admin_api_key" {
+  type      = string
+  sensitive = true
+}
+

@@ -2,6 +2,8 @@
   import type { Apartment } from "$lib/types";
   import { Icon } from "@lucide/svelte";
   import FaqSection from "./FAQSection.svelte";
+  import ApartmentCalendar from "./ApartmentCalendar.svelte";
+  import { Separator } from "bits-ui";
   let { apartment } = $props<{ apartment: Apartment }>();
 
   const half = Math.ceil(apartment.amenities.length / 2);
@@ -16,13 +18,15 @@
     <p class="leading-relaxed">{@html apartment.description}</p>
   </section>
 
-  <hr class="border-t-2 border-gray-200" />
+  <Separator.Root
+    class="bg-gray-200 my-8 shrink-0 data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-[1px]"
+  />
 
   <!-- Amenities Section -->
   <section>
     <h2 class="text-3xl font-semibold mb-8">Udogodnienia</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
       <div class="space-y-6">
         {#each leftColumn as amenity}
           {@const IconComponent = amenity.icon}
@@ -55,11 +59,19 @@
     </div>
   </section>
 
-  <hr class="border-t-2 border-gray-200" />
+  <Separator.Root
+    class="bg-gray-200 my-8 shrink-0 data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-[1px]"
+  />
 
-  <section>
-    <h2 class="text-3xl font-semibold mb-8">Dodatkowe informacje</h2>
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-16">
+    <section>
+      <h2 class="text-3xl font-semibold mb-8">Dodatkowe informacje</h2>
+      <FaqSection />
+    </section>
 
-    <FaqSection />
-  </section>
+    <!-- <section> -->
+    <!--   <h2 class="text-3xl font-semibold mb-8">Dostępne terminy</h2> -->
+    <!--   <ApartmentCalendar /> -->
+    <!-- </section> -->
+  </div>
 </div>
