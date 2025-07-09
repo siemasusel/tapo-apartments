@@ -2,15 +2,13 @@
 # This resource MUST be in us-east-1 for CloudFront
 resource "aws_acm_certificate" "cert" {
   provider = aws.us_east_1
-  count    = var.custom_domain_name != null ? 1 : 0 # Only create if custom domain is provided
 
-  # The primary domain is the first element in your custom_domain_name list
-  domain_name = var.custom_domain_name[0]
+  # The primary domain is the root domain
+  domain_name = var.root_domain_name
 
   # Subject Alternative Names for www and any other domains you want on this cert
-  # 'slice(var.custom_domain_name, 1, length(var.custom_domain_name))' dynamically adds
-  # all domains from the second element onwards (e.g., www.tapoapartamenty.pl)
-  subject_alternative_names = length(var.custom_domain_name) > 1 ? slice(var.custom_domain_name, 1, length(var.custom_domain_name)) : []
+  # (e.g., www.tapoapartamenty.pl)
+  subject_alternative_names = ["www.${var.root_domain_name}"]
 
   validation_method = "DNS" # Crucial for automatic validation with Route 53
 
@@ -29,9 +27,9 @@ resource "aws_acm_certificate" "cert" {
 # It relies on the Route 53 records created in dns.tf.
 resource "aws_acm_certificate_validation" "cert_validation" {
   provider = aws.us_east_1
-  count    = var.custom_domain_name != null ? 1 : 0
+  count    = 1
 
-  certificate_arn = aws_acm_certificate.cert[0].arn
+  certificate_arn = aws_acm_certificate.cert.arn
 
   # Get the validation FQDNs from the Route 53 records we created specifically for ACM validation.
   # This makes the validation fully automated.
@@ -48,5 +46,5 @@ resource "aws_acm_certificate_validation" "cert_validation" {
 # Outputting the certificate ARN for other resources that might need it
 output "acm_certificate_arn_output" {
   description = "The ARN of the validated ACM certificate."
-  value       = var.custom_domain_name != null ? aws_acm_certificate.cert[0].arn : null
+  value       = aws_acm_certificate.cert.arn
 }

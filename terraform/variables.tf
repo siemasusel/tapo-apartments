@@ -2,7 +2,7 @@
 variable "aws_region" {
   description = "The AWS region to deploy resources in."
   type        = string
-  default     = "eu-central-1" # Change to your preferred region
+  default     = "eu-central-1"
 }
 
 data "aws_caller_identity" "current" {}
@@ -11,13 +11,12 @@ data "aws_caller_identity" "current" {}
 variable "project_name" {
   description = "A unique name prefix for the S3 bucket and other resources."
   type        = string
-  default     = "tapo-apartamenty" # Change to a unique name
+  default     = "tapo-apartamenty"
 }
 
-variable "custom_domain_name" {
-  description = "The custom domain names for the CloudFront distribution (e.g., example.com, www.example.com)"
-  type        = list(string)
-  default     = []
+variable "root_domain_name" {
+  description = "The primary root domain name (e.g., tapoapartamenty.pl)."
+  type        = string
 }
 
 variable "tapo_ola_calendar_url" {

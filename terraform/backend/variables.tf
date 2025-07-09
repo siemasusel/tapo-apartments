@@ -19,6 +19,17 @@ variable "dynamodb_table_name" {
   default     = "ApartmentsData"
 }
 
+variable "root_domain_name" {
+  description = "The primary root domain name (e.g., tapoapartamenty.pl)."
+  type        = string
+}
+
+variable "hosted_zone_id" {
+  description = "The ID of the Route 53 Hosted Zone where DNS records for the domain will be managed."
+  type        = string
+}
+
+
 variable "tapo_ola_calendar_url" {
   type      = string
   sensitive = true

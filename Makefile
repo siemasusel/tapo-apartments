@@ -46,40 +46,24 @@ invalidate:
 # Full deployment (build + sync + invalidate)
 deploy: build sync invalidate
 
-# Decrypt and apply Terraform with env secrets for ALL modules
-# .PHONY: terraform-apply
-# terraform-apply:
-# 	$(call terraform apply,$(TERRAFORM_COMMON_VARS))
-# 	@echo "Remember to run CloudFront invalidation for '/*' if frontend changes were made!"
-
-
 # Decrypt and plan Terraform with env secrets for ALL modules
-# .PHONY: terraform-plan
-# terraform-plan:
-# 	$(call terraform plan,$(TERRAFORM_COMMON_VARS))
-
-
-# Decrypt and apply Terraform for ONLY the frontend module
-.PHONY: terraform-apply-frontend
-terraform-apply-frontend:
-	$(call DECRYPT_SECRETS_AND_RUN,terraform apply,-target=module.frontend $(TERRAFORM_COMMON_VARS))
-	@echo "CloudFront invalidation for '/*' is recommended after frontend changes."
-
-
-# Decrypt and plan Terraform for ONLY the frontend module
-.PHONY: terraform-plan-frontend
-terraform-plan-frontend:
-	$(call terraform plan,-target=module.frontend $(TERRAFORM_COMMON_VARS))
-
+.PHONY: terraform-plan
+terraform-plan:
+	@echo "Decrypting secrets..."
+	@export $$(SOPS_AGE_KEY_FILE=$(HOME)/.config/sops/age/keys.txt sops -d backend/secrets.enc.env | xargs) && \
+	cd terraform && \
+	terraform plan \
+		-var="tapo_ola_calendar_url=$${TAPO_OLA_CALENDAR_URL}" \
+		-var="tapo_ania_calendar_url=$${TAPO_ANIA_CALENDAR_URL}" \
+		-var="tapo_admin_api_key=$${TAPO_ADMIN_API_KEY}"
 
 # Decrypt and apply Terraform for ONLY the backend module
-.PHONY: terraform-apply-backend
-terraform-apply-backend:
+.PHONY: terraform-apply
+terraform-apply:
 	@echo "Decrypting secrets..."
 	@export $$(SOPS_AGE_KEY_FILE=$(HOME)/.config/sops/age/keys.txt sops -d backend/secrets.enc.env | xargs) && \
 	cd terraform && \
 	terraform apply \
-		-target=module.backend \
 		-var="tapo_ola_calendar_url=$${TAPO_OLA_CALENDAR_URL}" \
 		-var="tapo_ania_calendar_url=$${TAPO_ANIA_CALENDAR_URL}" \
 		-var="tapo_admin_api_key=$${TAPO_ADMIN_API_KEY}"

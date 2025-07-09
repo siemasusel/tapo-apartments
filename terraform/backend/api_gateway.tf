@@ -46,8 +46,8 @@ resource "aws_apigatewayv2_route" "api_proxy_route" {
 # Deploy the HTTP API to a stage
 resource "aws_apigatewayv2_stage" "api_http_stage" {
   api_id      = aws_apigatewayv2_api.backend_http_api.id
-  name        = "prod" # Your stage name
-  auto_deploy = true   # Automatically deploy on route/integration changes
+  name        = "$default" # Your stage name
+  auto_deploy = true       # Automatically deploy on route/integration changes
 
   # Optional: Enable access logging for HTTP API
   # access_log_settings {
@@ -64,6 +64,11 @@ resource "aws_apigatewayv2_stage" "api_http_stage" {
   #     integrationErrorMessage = "$context.integrationErrorMessage"
   #   })
   # }
+
+  default_route_settings {
+    throttling_burst_limit = 50  # Allows for temporary spikes
+    throttling_rate_limit  = 100 # Sustained requests per second (RPS)
+  }
 
   tags = {
     Name        = "${var.project_name}-gateway-http-stage"
@@ -93,3 +98,38 @@ resource "aws_lambda_permission" "http_api_lambda_permission" {
 #     Environment = "production"
 #   }
 # }
+
+resource "aws_apigatewayv2_domain_name" "api_gateway_custom_domain" {
+  domain_name = "api.${var.root_domain_name}"
+  domain_name_configuration {
+    certificate_arn = aws_acm_certificate.api_gateway_cert.arn
+    endpoint_type   = "REGIONAL" # Or "EDGE" if you prefer CloudFront distribution (more complex setup)
+    # The below will be populated by AWS after creation
+    # hosted_zone_id is for CloudFront distributions, not typically for REGIONAL
+    # If using REGIONAL, you'll use the target_domain_name for your DNS A record.
+    security_policy = "TLS_1_2"
+  }
+
+  tags = {
+    Name        = "${var.project_name}-api-gateway-custom-domain"
+    Project     = var.project_name
+    Environment = "production"
+  }
+}
+
+resource "aws_apigatewayv2_api_mapping" "api_mapping" {
+  api_id      = aws_apigatewayv2_api.backend_http_api.id
+  domain_name = aws_apigatewayv2_domain_name.api_gateway_custom_domain.id
+  stage       = aws_apigatewayv2_stage.api_http_stage.id
+  # This makes the base path "/" for your custom domain
+  # If you wanted your API to be accessible at something like api.yourdomain.com/v1,
+  # you would set base_path = "v1"
+  # For this example, we assume you want it at the root of the subdomain.
+  api_mapping_key = "v1"
+
+  depends_on = [
+    aws_apigatewayv2_domain_name.api_gateway_custom_domain,
+    aws_apigatewayv2_api.backend_http_api,
+    aws_apigatewayv2_stage.api_http_stage,
+  ]
+}

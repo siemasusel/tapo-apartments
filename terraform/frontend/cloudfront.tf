@@ -5,7 +5,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   comment             = "CloudFront distribution for ${var.project_name}"
   default_root_object = "index.html" # Serve index.html for the root URL
 
-  aliases = var.custom_domain_name
+  aliases = [var.root_domain_name, "www.${var.root_domain_name}"]
 
   origin {
     domain_name = aws_s3_bucket.site_bucket.bucket_regional_domain_name
@@ -85,9 +85,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = var.custom_domain_name == null ? true : false
-    acm_certificate_arn            = var.custom_domain_name != null ? aws_acm_certificate_validation.cert_validation[0].certificate_arn : null
-    ssl_support_method             = var.custom_domain_name != null ? "sni-only" : null
+    cloudfront_default_certificate = false
+    acm_certificate_arn            = aws_acm_certificate_validation.cert_validation[0].certificate_arn
+    ssl_support_method             = "sni-only"
     minimum_protocol_version       = "TLSv1.2_2021"
   }
 

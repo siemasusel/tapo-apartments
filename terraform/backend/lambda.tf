@@ -10,9 +10,6 @@ resource "aws_s3_object" "lambda_code" {
   # This forces a new S3 object upload and Lambda update if the code changes.
   key    = "backend/${data.archive_file.lambda_zip.output_md5}.zip"
   source = data.archive_file.lambda_zip.output_path # Path to the generated zip file
-  # The etag attribute is automatically calculated from the source file's MD5.
-  # It helps Terraform detect changes in the file content.
-  etag = data.archive_file.lambda_zip.output_md5
 
   tags = {
     Name        = "${var.project_name}-lambda-code-object"
