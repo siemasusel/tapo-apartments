@@ -4,7 +4,7 @@
   import FaqSection from "./FAQSection.svelte";
   import ApartmentCalendar from "./ApartmentCalendar.svelte";
   import { Separator } from "bits-ui";
-  let { apartment } = $props<{ apartment: Apartment }>();
+  let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
 
   const half = Math.ceil(apartment.amenities.length / 2);
   const leftColumn = apartment.amenities.slice(0, half);
@@ -69,9 +69,9 @@
       <FaqSection />
     </section>
 
-    <!-- <section> -->
-    <!--   <h2 class="text-3xl font-semibold mb-8">Dostępne terminy</h2> -->
-    <!--   <ApartmentCalendar /> -->
-    <!-- </section> -->
+    <section>
+      <h2 class="text-3xl font-semibold mb-8">Dostępne terminy</h2>
+      <ApartmentCalendar slug={apartment.slug} />
+    </section>
   </div>
 </div>
