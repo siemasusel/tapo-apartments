@@ -126,9 +126,8 @@
           <div
             class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
-            <!-- <Maximize2 class="w-8 h-8 text-gray-800 stroke-[1.5]" /> -->
             <div class="p-2 rounded-full bg-white/30 backdrop-blur-sm">
-              <Maximize2 class="w-6 h-6 text-gray-900 stroke-[1.5]" />
+              <Maximize2 class="size-6 text-gray-900 stroke-[1.5]" />
             </div>
           </div>
         </div>

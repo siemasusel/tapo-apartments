@@ -139,7 +139,7 @@
         aria-label="Menu toggle"
       >
         <svg
-          class="w-9 h-9 text-black"
+          class="size-9 text-black"
           viewBox="0 0 24 24"
           stroke="currentColor"
           fill="none"

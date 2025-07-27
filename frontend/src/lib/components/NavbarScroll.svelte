@@ -151,7 +151,7 @@
     {isMobileMenuOpen ? 'rotate-90' : 'rotate-0'}"
         on:click={() => (isMobileMenuOpen = !isMobileMenuOpen)}
       >
-        <Menu class="w-8 h-8" />
+        <Menu class="size-8" />
       </button>
 
       <!-- Desktop Reservation Button -->

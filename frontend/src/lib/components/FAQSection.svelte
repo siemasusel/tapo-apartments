@@ -84,7 +84,7 @@
         >
           <span>{item.question}</span>
           <ChevronDown
-            class="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180"
+            class="size-5 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180"
           />
         </Accordion.Trigger>
       </Accordion.Header>

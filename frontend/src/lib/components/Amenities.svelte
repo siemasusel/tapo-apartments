@@ -44,16 +44,14 @@
          flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 text-left sm:text-center"
         >
           <!-- Icon -->
-          <div
-            class="relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center sm:mb-4 sm:mx-auto"
-          >
+          <div class="relative size-12 sm:size-16 flex-shrink-0 flex items-center justify-center sm:mb-4 sm:mx-auto">
             <div
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_0%,transparent_60%)] backdrop-blur-sm"
             ></div>
             <div
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_10%,transparent_70%)]"
             ></div>
-            <svelte:component this={amenity.icon} class="w-8 h-8 sm:w-10 sm:h-10 text-primary-500 relative z-10" />
+            <svelte:component this={amenity.icon} class="size-8 sm:w-10 sm:h-10 text-primary-500 relative z-10" />
           </div>
 
           <!-- Text -->

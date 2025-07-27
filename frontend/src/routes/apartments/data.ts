@@ -1,6 +1,7 @@
 import type { Apartment } from "$lib/types";
+import { parseDate } from "@internationalized/date";
 
-import { SquareParking, CookingPot, Wifi, TvMinimalPlay, ShowerHead, WashingMachine, Microwave, Gamepad, Puzzle, Dice5, Book, BookOpen } from "@lucide/svelte";
+import { SquareParking, CookingPot, Wifi, TvMinimalPlay, ShowerHead, WashingMachine, Microwave, BookOpen } from "@lucide/svelte";
 import { hairdryer } from "@lucide/lab";
 
 export const apartments: Apartment[] = [
@@ -15,7 +16,13 @@ export const apartments: Apartment[] = [
     },
     description:
       "Apartment Ola to idealna propozycja odpoczynku dla par. W apartamencie czeka na Was stylowe wnętrze z akcentami folklorystycznymi, w pełni wyposażony aneks kuchenny z mikrofalówką i ekspresem kapsułkowym, rozkładana kanapa, telewizor z opcją Smart TV, przytulna sypialnia oraz łazienka z prysznicem. Proponujemy także wybór książek oraz gier, a także możliwość pozostawienia sprzętu narciarskiego w części wspólnej.",
-    price: 360,
+    basePrice: 360,
+    priceSpans: [
+      { startDate: parseDate('2025-12-01'), endDate: parseDate('2026-02-28'), price: 400 }, // High season override
+      { startDate: parseDate('2026-12-01'), endDate: parseDate('2027-02-28'), price: 400 }, // High season override
+      { startDate: parseDate('2027-12-01'), endDate: parseDate('2028-02-29'), price: 400 }, // High season override
+      { startDate: parseDate('2028-12-01'), endDate: parseDate('2029-02-28'), price: 400 }, // High season override
+    ],
     amenities: [
       {
         icon: ShowerHead,
@@ -66,7 +73,13 @@ export const apartments: Apartment[] = [
     },
     description:
       "Apartament Ania sprawdzi się dla rodzin, które cenią sobie przestronne i komfortowe wnętrza. W apartamencie znajduje się łóżko dwuosobowe oraz osobna sypialnia z dwoma łóżkami jednoosobowymi. Do Waszej dyspozycji znajduje się w pełni wyposażona kuchnia wraz z mikrofalówką, ekspresem kapsułkowym, dwoma biurkami, telewizorem z opcją Smart TV oraz łazienką z prysznicem. W części wspólnej znajduje się narciarnia oraz kącik z książkami i grami. ",
-    price: 450,
+    basePrice: 400,
+    priceSpans: [
+      { startDate: parseDate('2025-12-01'), endDate: parseDate('2026-02-28'), price: 490 }, // High season override
+      { startDate: parseDate('2026-12-01'), endDate: parseDate('2027-02-28'), price: 490 }, // High season override
+      { startDate: parseDate('2027-12-01'), endDate: parseDate('2028-02-29'), price: 490 }, // High season override
+      { startDate: parseDate('2028-12-01'), endDate: parseDate('2029-02-28'), price: 490 }, // High season override
+    ],
     amenities: [
       {
         icon: ShowerHead,

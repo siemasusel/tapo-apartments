@@ -42,7 +42,7 @@
         <h3 class="text-gray-400 font-medium mb-2 lg:mb-3">Obserwuj nas</h3>
         <div class="flex justify-center lg:justify-start space-x-3 mb-2">
           <a href="/#" class="hover:text-gray-100 transition-colors">
-            <Instagram class="w-8 h-8" />
+            <Instagram class="size-8" />
           </a>
         </div>
       </div>

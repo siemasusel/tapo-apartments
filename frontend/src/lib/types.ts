@@ -1,5 +1,6 @@
 import { type Icon as IconType } from '@lucide/svelte';
 import type { IconNode } from 'lucide-svelte';
+import type { DateValue } from "@internationalized/date";
 
 export interface BedConfiguration {
   double: number;
@@ -13,13 +14,20 @@ export interface Amenity {
   title: string;
 }
 
+export interface PriceSpan {
+  startDate: DateValue;
+  endDate: DateValue;
+  price: number;
+}
+
 export interface Apartment {
   slug: string;
   title: string;
   capacity: number;
   beds: BedConfiguration;
   description: string;
-  price: number;
+  basePrice: number;
+  priceSpans?: PriceSpan[];
   amenities: Amenity[];
 }
 

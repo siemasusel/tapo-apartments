@@ -3,7 +3,8 @@
   import { BedDouble, BedSingle, CookingPot, ShowerHead, Sofa, Users } from "lucide-svelte";
   import GalleryCarousel from "./GalleryCarousel.svelte";
 
-  let { apartment } = $props<{ apartment: Apartment }>();
+  let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
+
   const { slug, beds, capacity } = apartment;
 </script>
 
@@ -96,7 +97,7 @@
     <div
       class="w-full lg:w-[28%] bg-primary-light p-6 rounded-xl flex flex-col justify-center items-center text-center mx-auto lg:mx-0 shadow-2xl"
     >
-      <div class="text-3xl font-bold mb-2">{apartment.price} zł</div>
+      <div class="text-3xl font-bold mb-2">{apartment.basePrice} zł</div>
       <div class="mb-4">za dobę</div>
       <a
         href="/reservation"

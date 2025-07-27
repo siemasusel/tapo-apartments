@@ -29,7 +29,7 @@
       text-white bg-primary hover:bg-primary-dark transition-colors duration-200"
     >
       Wróć do Strony Głównej
-      <ArrowRight class="ml-1 w-5 h-5" />
+      <ArrowRight class="ml-1 size-5" />
     </a>
   </div>
 </div>

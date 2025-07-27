@@ -33,9 +33,9 @@
           {@const iconNode = amenity.iconNode}
           <div class="flex items-center space-x-3">
             {#if iconNode}
-              <Icon {iconNode} class="w-8 h-8" />
+              <Icon {iconNode} class="size-8" />
             {:else if IconComponent}
-              <IconComponent class="w-8 h-8" />
+              <IconComponent class="size-8" />
             {/if}
             <span>{amenity.title}</span>
           </div>
@@ -48,9 +48,9 @@
           {@const iconNode = amenity.iconNode}
           <div class="flex items-center space-x-3">
             {#if iconNode}
-              <Icon {iconNode} class="w-8 h-8" />
+              <Icon {iconNode} class="size-8" />
             {:else if IconComponent}
-              <IconComponent class="w-8 h-8" />
+              <IconComponent class="size-8" />
             {/if}
             <span>{amenity.title}</span>
           </div>
@@ -71,7 +71,7 @@
 
     <section>
       <h2 class="text-3xl font-semibold mb-8">Dostępne terminy</h2>
-      <ApartmentCalendar slug={apartment.slug} />
+      <ApartmentCalendar {apartment} />
     </section>
   </div>
 </div>

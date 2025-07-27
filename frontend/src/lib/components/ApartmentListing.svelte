@@ -1,8 +1,17 @@
-<!-- src/lib/ApartmentListing.svelte -->
 <script lang="ts">
-  export let apartment;
+  import type { Apartment } from "$lib/types";
 
-  import { Users, BedDouble, BedSingle, Sofa } from "lucide-svelte";
+  let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
+
+  import { Users, BedDouble, BedSingle, Sofa, type Icon as IconType } from "@lucide/svelte";
+
+  type ImageModule = {
+    default: {
+      img: {
+        src: string;
+      };
+    };
+  };
 
   const images = import.meta.glob("/src/lib/assets/gallery/**/1.jpg", {
     query: {
@@ -11,81 +20,59 @@
       format: "webp",
     },
     eager: true,
-  });
+  }) as Record<string, ImageModule>;
 
-  $: imagePath = images[`/src/lib/assets/gallery/${apartment.slug}/1.jpg`].default.img.src as string;
+  const imageKey = `/src/lib/assets/gallery/${apartment.slug}/1.jpg`;
+  const imageModule = images[imageKey];
+  const imagePath = $derived(imageModule?.default.img.src ?? "");
 </script>
+
+{#snippet IconInfo(Icon: typeof IconType, value: string | number)}
+  <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+    <Icon class="size-5" />
+    <span class="font-medium">{value}</span>
+  </div>
+{/snippet}
 
 <a
   href={`/apartments/${apartment.slug}`}
-  class="block group relative h-96 w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl"
+  class="
+    block group relative h-96 w-full overflow-hidden rounded-xl shadow-lg
+    transition-shadow duration-300 ease-in-out hover:shadow-xl
+    "
 >
-  <!-- Darkened Image Overlay -->
   <div class="absolute inset-0 bg-black/40 z-10 rounded-xl"></div>
 
-  <!-- Apartment Image -->
   <img
     src={imagePath}
     alt={apartment.title}
     class="absolute inset-0 h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
   />
 
-  <!-- Content Overlay -->
   <div class="absolute inset-0 z-20 flex flex-col items-center p-6 text-white">
-    <!-- Centered Title -->
     <h2 class="text-3xl font-bold mb-4 text-center drop-shadow-lg">{apartment.title}</h2>
 
-    <!-- Icons Container (original positioning) -->
     <div class="mt-auto w-full flex justify-between items-end">
       <div class="flex flex-wrap flex-col sm:flex-row gap-4">
-        <!-- Capacity -->
-        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-          <Users class="w-5 h-5" />
-          <span class="font-medium">{apartment.capacity}</span>
-        </div>
+        {@render IconInfo(Users, apartment.capacity)}
 
-        <!-- Beds -->
         {#if apartment.beds.double > 0}
-          <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-            <BedDouble class="w-5 h-5" />
-            <span class="font-medium">{apartment.beds.double}</span>
-          </div>
+          {@render IconInfo(BedDouble, apartment.beds.double)}
         {/if}
 
         {#if apartment.beds.single > 0}
-          <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-            <BedSingle class="w-5 h-5" />
-            <span class="font-medium">{apartment.beds.single}</span>
-          </div>
+          {@render IconInfo(BedSingle, apartment.beds.single)}
         {/if}
 
         {#if apartment.beds.sofa > 0}
-          <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-            <Sofa class="w-5 h-5" />
-            <span class="font-medium">{apartment.beds.sofa}</span>
-          </div>
+          {@render IconInfo(Sofa, apartment.beds.sofa)}
         {/if}
       </div>
 
-      <!-- Price -->
       <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-        <span class="font-bold text-lg">{apartment.price} zł</span>
+        <span class="font-bold text-lg">{apartment.basePrice} zł</span>
         <span class="font-medium text-sm"> / noc</span>
       </div>
     </div>
   </div>
 </a>
-
-<style>
-  /* Smooth transitions for all properties */
-  a {
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-
-  /* Small scale effect on hover */
-  a:hover {
-    transform: translateY(-2px);
-  }
-</style>

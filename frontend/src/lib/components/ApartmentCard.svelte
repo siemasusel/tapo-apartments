@@ -40,28 +40,28 @@
       >
         <div class="flex items-center space-x-1">
           <span class="text-xl align-middle">{apartment.capacity}</span>
-          <Users class="w-6 h-6 mt-0.5" />
+          <Users class="size-6 mt-0.5" />
         </div>
 
         <div class="flex items-center gap-4">
           {#if apartment.beds.double > 0}
             <div class="flex items-center space-x-1">
               <span class="text-xl">{apartment.beds.double}</span>
-              <BedDouble class="w-6 h-6 mt-0.5" />
+              <BedDouble class="size-6 mt-0.5" />
             </div>
           {/if}
 
           {#if apartment.beds.single > 0}
             <div class="flex items-center space-x-1">
               <span class="text-xl">{apartment.beds.single}</span>
-              <BedSingle class="w-6 h-6 mt-0.5" />
+              <BedSingle class="size-6 mt-0.5" />
             </div>
           {/if}
 
           {#if apartment.beds.sofa > 0}
             <div class="flex items-center space-x-1">
               <span class="text-xl">{apartment.beds.sofa}</span>
-              <Sofa class="w-6 h-6 mt-0.5" />
+              <Sofa class="size-6 mt-0.5" />
             </div>
           {/if}
         </div>
@@ -71,9 +71,8 @@
       <p class="text-gray-700 mb-4 text-justify">{apartment.description}</p>
 
       <!-- Price -->
-      <!-- <div class="text-xl font-semibold">{apartment.price} zł / noc</div> -->
       <div class="text-xl font-semibold">
-        <span>{apartment.price} zł</span>
+        <span>{apartment.basePrice} zł</span>
         <span class="text-base"> / noc</span>
       </div>
     </div>

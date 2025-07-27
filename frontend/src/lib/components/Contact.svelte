@@ -29,7 +29,7 @@
       <!-- Address -->
       <div class="flex items-start mb-6">
         <div class="bg-primary-dark p-3 rounded-lg mr-4">
-          <MapPinHouse class="text-white h-6 w-6" />
+          <MapPinHouse class="text-white size-6" />
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Nasza lokalizacja</h3>
@@ -43,7 +43,7 @@
       <!-- Email -->
       <div class="flex items-start mb-6">
         <div class="bg-primary-dark p-3 rounded-lg mr-4">
-          <Mail class="text-white h-6 w-6" />
+          <Mail class="text-white size-6" />
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
@@ -54,7 +54,7 @@
       <!-- Phone -->
       <div class="flex items-start">
         <div class="bg-primary-dark p-3 rounded-lg mr-4">
-          <Phone class="text-white h-6 w-6" />
+          <Phone class="text-white size-6" />
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Telefon</h3>
