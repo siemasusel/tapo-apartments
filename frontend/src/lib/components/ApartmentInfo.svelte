@@ -63,7 +63,7 @@
     class="bg-gray-200 my-8 shrink-0 data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-[1px]"
   />
 
-  <div class="grid grid-cols-1 xl:grid-cols-2 gap-16">
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 xl:gap-16">
     <section>
       <h2 class="text-3xl font-semibold mb-8">Dodatkowe informacje</h2>
       <FaqSection />
