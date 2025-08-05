@@ -8,5 +8,5 @@ export const contactInformation: ContactInformation = {
     zip: "33-380"
   },
   email: "kontakt@tapoapartamenty.pl",
-  phone: "+48 530 557 661"
+  phone: "+48 530 557 611"
 };
