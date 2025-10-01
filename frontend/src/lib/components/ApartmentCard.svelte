@@ -4,7 +4,9 @@
   export let apartment: Apartment;
   export let isEven: boolean;
 
-  import { Users, BedDouble, BedSingle, Sofa } from "lucide-svelte";
+  import { Popover } from "bits-ui";
+
+  import { Users, BedDouble, BedSingle, Sofa, Info } from "lucide-svelte";
 
   const images = import.meta.glob("/src/lib/assets/gallery/**/1.jpg", {
     query: {
@@ -71,9 +73,26 @@
       <p class="text-gray-700 mb-4 text-justify">{apartment.description}</p>
 
       <!-- Price -->
-      <div class="text-xl font-semibold">
-        <span>{apartment.basePrice} zł</span>
-        <span class="text-base"> / noc</span>
+      <div class={`w-full flex justify-center ${isEven ? "lg:justify-end" : "lg:justify-start"}`}>
+        <Popover.Root>
+          <Popover.Trigger
+            class="flex items-center gap-1 cursor-pointer text-xl font-semibold"
+            aria-label="Informacja o cenie"
+          >
+            <span>{apartment.basePrice} zł</span>
+            <span class="text-base"> / noc</span>
+            <Info class="size-4 text-gray-500 hover:text-gray-700" />
+          </Popover.Trigger>
+
+          <Popover.Portal>
+            <Popover.Content
+              sideOffset={6}
+              class="rounded-md border border-gray-200 bg-white shadow-lg p-3 text-xs text-gray-700 max-w-[240px] z-50"
+            >
+              Cena obowiązuje w dniu dzisiejszym i może różnić się w zależności od terminu rezerwacji.
+            </Popover.Content>
+          </Popover.Portal>
+        </Popover.Root>
       </div>
     </div>
 

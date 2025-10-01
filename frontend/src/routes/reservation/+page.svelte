@@ -18,7 +18,6 @@
     name="description"
     content="Zarezerwuj swój pobyt w TAPO Apartamenty w Krynicy-Zdroju. Wypełnij formularz rezerwacji online, sprawdź dostępność i wybierz idealny apartament dla siebie."
   />
-  />
 
   <meta property="og:title" content="Rezerwacja Online | TAPO Apartamenty Krynica-Zdrój" />
   <meta

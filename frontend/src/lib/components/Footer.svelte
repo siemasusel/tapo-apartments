@@ -34,6 +34,7 @@
           <li><a href="/" class="hover:text-gray-100 transition-colors">Strona główna</a></li>
           <li><a href="/apartments" class="hover:text-gray-100 transition-colors">Apartamenty</a></li>
           <li><a href="/reservation" class="hover:text-gray-100 transition-colors">Rezerwacja</a></li>
+          <li><a href="/privacy-policy" class="hover:text-gray-100 transition-colors">Polityka Prywatności</a></li>
         </ul>
       </div>
 

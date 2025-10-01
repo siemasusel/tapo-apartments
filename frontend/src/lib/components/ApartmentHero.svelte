@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { Apartment } from "$lib/types";
-  import { BedDouble, BedSingle, CookingPot, ShowerHead, Sofa, Users } from "lucide-svelte";
+  import { BedDouble, BedSingle, CookingPot, Info, ShowerHead, Sofa, Users } from "lucide-svelte";
   import GalleryCarousel from "./GalleryCarousel.svelte";
+  import { Popover } from "bits-ui";
 
   let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
 
@@ -97,8 +98,28 @@
     <div
       class="w-full lg:w-[28%] bg-primary-light p-6 rounded-xl flex flex-col justify-center items-center text-center mx-auto lg:mx-0 shadow-2xl"
     >
-      <div class="text-3xl font-bold mb-2">{apartment.basePrice} zł</div>
+      <Popover.Root>
+        <Popover.Trigger
+          class="flex items-center gap-1 cursor-pointer text-3xl font-bold mb-2"
+          aria-label="Informacja o cenie"
+        >
+          <span>{apartment.basePrice} zł</span>
+          <Info class="size-5 text-gray-800 hover:text-gray-900" />
+        </Popover.Trigger>
+
+        <Popover.Portal>
+          <Popover.Content
+            sideOffset={6}
+            class="rounded-md border border-gray-200 bg-white shadow-lg p-3 text-xs text-gray-700 max-w-[240px] z-50"
+          >
+            Cena obowiązuje w dniu dzisiejszym i może różnić się w zależności od terminu rezerwacji. Poniżej znajduje
+            się kalendarz z cenami za poszczególne dni.
+          </Popover.Content>
+        </Popover.Portal>
+      </Popover.Root>
+
       <div class="mb-4">za dobę</div>
+
       <a
         href="/reservation"
         class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 block text-center"
