@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { Apartment } from "$lib/types";
+  import { getApartmentPriceForDate } from "$lib/utils/pricing";
+  import { getLocalTimeZone, today } from "@internationalized/date";
 
   export let apartment: Apartment;
   export let isEven: boolean;
@@ -18,6 +20,8 @@
   });
 
   $: imagePath = images[`/src/lib/assets/gallery/${apartment.slug}/1.jpg`].default.img.src as string;
+
+  const price = getApartmentPriceForDate(apartment, today(getLocalTimeZone()));
 </script>
 
 <!-- Apartment Card Container -->
@@ -79,7 +83,7 @@
             class="flex items-center gap-1 cursor-pointer text-xl font-semibold"
             aria-label="Informacja o cenie"
           >
-            <span>{apartment.basePrice} zł</span>
+            <span>{price} zł</span>
             <span class="text-base"> / noc</span>
             <Info class="size-4 text-gray-500 hover:text-gray-700" />
           </Popover.Trigger>

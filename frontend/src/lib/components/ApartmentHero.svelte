@@ -3,10 +3,14 @@
   import { BedDouble, BedSingle, CookingPot, Info, ShowerHead, Sofa, Users } from "lucide-svelte";
   import GalleryCarousel from "./GalleryCarousel.svelte";
   import { Popover } from "bits-ui";
+  import { getApartmentPriceForDate } from "$lib/utils/pricing";
+  import { getLocalTimeZone, today } from "@internationalized/date";
 
   let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
 
   const { slug, beds, capacity } = apartment;
+
+  const price = getApartmentPriceForDate(apartment, today(getLocalTimeZone()));
 </script>
 
 <div class="space-y-6 rounded-t-xl">
@@ -103,7 +107,7 @@
           class="flex items-center gap-1 cursor-pointer text-3xl font-bold mb-2"
           aria-label="Informacja o cenie"
         >
-          <span>{apartment.basePrice} zł</span>
+          <span>{price} zł</span>
           <Info class="size-5 text-gray-800 hover:text-gray-900" />
         </Popover.Trigger>
 

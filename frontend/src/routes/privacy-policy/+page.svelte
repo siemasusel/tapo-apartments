@@ -33,8 +33,8 @@
     33-380 Krynica-Zdrój. Kontakt z administratorem jest możliwy za pośrednictwem adresu e-mail
     <a href="mailto:{contactInformation.email}" class="hover:underline">{contactInformation.email}</a>
     lub telefonicznie pod numerem
-    <a href="tel:{contactInformation.phone}" class="hover:underline">{contactInformation.phone}</a>
-    . Administrator danych nie powołał inspektora ochrony danych osobowych.
+    <a href="tel:{contactInformation.phone}" class="hover:underline">{contactInformation.phone}</a>. Administrator
+    danych nie powołał inspektora ochrony danych osobowych.
   </p>
   <p>
     Dane osobowe są przetwarzane w celu zrealizowania poniżej wymienionych usług: zawarcie umowy o świadczenie usług

@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { Apartment } from "$lib/types";
+  import { getApartmentPriceForDate } from "$lib/utils/pricing";
+  import { getLocalTimeZone, today } from "@internationalized/date";
 
   let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
 
@@ -25,6 +27,8 @@
   const imageKey = `/src/lib/assets/gallery/${apartment.slug}/1.jpg`;
   const imageModule = images[imageKey];
   const imagePath = $derived(imageModule?.default.img.src ?? "");
+
+  const price = getApartmentPriceForDate(apartment, today(getLocalTimeZone()));
 </script>
 
 {#snippet IconInfo(Icon: typeof IconType, value: string | number)}
@@ -70,7 +74,7 @@
       </div>
 
       <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-        <span class="font-bold text-lg">{apartment.basePrice} zł</span>
+        <span class="font-bold text-lg">{price} zł</span>
         <span class="font-medium text-sm"> / noc</span>
       </div>
     </div>
