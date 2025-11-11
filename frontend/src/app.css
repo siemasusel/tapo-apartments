@@ -108,3 +108,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .numbered {
+    counter-reset: paragraph;
+  }
+
+  .numbered p {
+    @apply relative pl-6; /* Tailwind padding + positioning */
+  }
+
+  .numbered p::before {
+    counter-increment: paragraph;
+    content: counter(paragraph) ".";
+    @apply absolute left-0 text-gray-700 font-medium;
+  }
+}
