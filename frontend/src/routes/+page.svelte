@@ -50,6 +50,14 @@
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TAPO Apartamenty - Wynajem Noclegów w Krynicy-Zdroju" />
+  <meta
+    name="twitter:description"
+    content="Odkryj komfortowe apartamenty TAPO w Krynicy-Zdroju. Idealne noclegi blisko atrakcji. Nowoczesne wnętrza, pełne wyposażenie."
+  />
+  <meta name="twitter:image" content={ogImageUrl} />
 
   <link rel="canonical" href={canonicalUrl} />
 </svelte:head>

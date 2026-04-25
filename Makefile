@@ -17,7 +17,7 @@ COMPOSE_FILE = $(COMPOSE_DIR)/docker-compose.yml
 DYNAMODB_ENDPOINT = http://localhost:8001
 TABLE_NAME = ApartmentsData
 
-.PHONY: all sync invalidate deploy-frontend terraform terraform-plan build-frontend run-frontend build-backend run-backend generate clean_generated_dir clean help
+.PHONY: all sync invalidate deploy-frontend deploy-backend terraform terraform-plan build-frontend run-frontend build-backend run-backend generate clean_generated_dir clean help
 
 # Default action
 all: deploy
@@ -48,6 +48,9 @@ invalidate:
 
 # Full deployment (build + sync + invalidate)
 deploy-frontend: build-frontend sync invalidate
+
+# Full backend deployment (build binary + terraform apply)
+deploy-backend: build-backend terraform-apply
 
 # Decrypt and plan Terraform with env secrets for ALL modules
 .PHONY: terraform-plan

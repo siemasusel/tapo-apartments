@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-  <title>Polityka Prywatności | TAPO Apartamenty Krynica-Zdrój</title>
+  <title>Regulamin Pobytu | TAPO Apartamenty Krynica-Zdrój</title>
 
   <meta name="description" content="Regulamin pobytu | TAPO Apartamenty w Krynicy-Zdroju." />
 
@@ -18,6 +18,7 @@
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta name="robots" content="noindex, nofollow" />
 
   <link rel="canonical" href={canonicalUrl} />
 </svelte:head>

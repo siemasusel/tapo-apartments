@@ -27,6 +27,11 @@
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Apartamenty | TAPO Apartamenty Krynica-Zdrój" />
+  <meta name="twitter:description" content={metaDescription} />
+  <meta name="twitter:image" content={ogImageUrl} />
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="canonical" href={canonicalUrl} />

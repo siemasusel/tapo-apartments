@@ -1,27 +1,26 @@
-import type { RequestHandler } from '@sveltejs/kit';
+import type { RequestHandler } from "@sveltejs/kit";
 
 export const prerender = true;
 
-import mainImage from '$lib/assets/hero-image.jpg?enhanced';
+import mainImage from "$lib/assets/hero-image.jpg?enhanced";
 
-import olaMainImage from '$lib/assets/gallery/ola/1.jpg?enhanced';
-import olaKitchenImage from '$lib/assets/gallery/ola/3.jpg?enhanced';
-import olaBedroomImage from '$lib/assets/gallery/ola/5.jpg?enhanced';
-import olaBathroomImage from '$lib/assets/gallery/ola/8.jpg?enhanced';
+import olaMainImage from "$lib/assets/gallery/ola/1.jpg?enhanced";
+import olaKitchenImage from "$lib/assets/gallery/ola/3.jpg?enhanced";
+import olaBedroomImage from "$lib/assets/gallery/ola/5.jpg?enhanced";
+import olaBathroomImage from "$lib/assets/gallery/ola/8.jpg?enhanced";
 
-import aniaMainImage from '$lib/assets/gallery/ania/1.jpg?enhanced';
-import aniaKitchenImage from '$lib/assets/gallery/ania/4.jpg?enhanced';
-import aniaBedroomImage from '$lib/assets/gallery/ania/6.jpg?enhanced';
-import aniaBathroomImage from '$lib/assets/gallery/ania/8.jpg?enhanced';
-
+import aniaMainImage from "$lib/assets/gallery/ania/1.jpg?enhanced";
+import aniaKitchenImage from "$lib/assets/gallery/ania/4.jpg?enhanced";
+import aniaBedroomImage from "$lib/assets/gallery/ania/6.jpg?enhanced";
+import aniaBathroomImage from "$lib/assets/gallery/ania/8.jpg?enhanced";
 export const GET: RequestHandler = async () => {
   const headers = {
-    'Content-Type': 'application/xml',
-    'Cache-Control': 'max-age=0, s-maxage=3600' // Cache for 1 hour
+    "Content-Type": "application/xml",
+    "Cache-Control": "max-age=0, s-maxage=3600", // Cache for 1 hour
   };
 
-  const baseUrl = 'https://www.tapoapartamenty.pl';
-  const currentDate = '2025-06-23'; // Use the current date for lastmod
+  const baseUrl = "https://www.tapoapartamenty.pl";
+  const currentDate = new Date().toISOString().slice(0, 10);
 
   const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -83,6 +82,13 @@ export const GET: RequestHandler = async () => {
             <image:caption>Łazienka w Apartamencie ANIA</image:caption>
         </image:image>
         </url>
+
+    <url>
+        <loc>${baseUrl}/reservation</loc>
+        <lastmod>${currentDate}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
 </urlset>`;
 

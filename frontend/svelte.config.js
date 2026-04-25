@@ -6,10 +6,12 @@ const config = {
   preprocess: vitePreprocess(),
 
   kit: {
+    prerender: {
+      origin: 'https://www.tapoapartamenty.pl'
+    },
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-      fallback: 'index.html',
       precompress: false,
       strict: true
     })
