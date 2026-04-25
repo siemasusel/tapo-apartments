@@ -47,7 +47,7 @@
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
-          <a href="mailto:{contactInformation.email}" class="text-white hover:underline">{contactInformation.email}</a>
+          <a href={`mailto:${contactInformation.email}`} class="text-white hover:underline">{contactInformation.email}</a>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Telefon</h3>
-          <a href="tel:{contactInformation.phone}" class="text-white hover:underline">{contactInformation.phone}</a>
+          <a href={`tel:${contactInformation.phone}`} class="text-white hover:underline">{contactInformation.phone}</a>
         </div>
       </div>
     </div>

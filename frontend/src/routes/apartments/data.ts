@@ -1,7 +1,16 @@
 import type { Apartment } from "$lib/types";
 import { parseDate } from "@internationalized/date";
 
-import { SquareParking, CookingPot, Wifi, TvMinimalPlay, ShowerHead, WashingMachine, Microwave, BookOpen } from "@lucide/svelte";
+import {
+  SquareParking,
+  CookingPot,
+  Wifi,
+  TvMinimalPlay,
+  ShowerHead,
+  WashingMachine,
+  Microwave,
+  BookOpen,
+} from "@lucide/svelte";
 import { hairdryer } from "@lucide/lab";
 
 export const apartments: Apartment[] = [
@@ -16,12 +25,13 @@ export const apartments: Apartment[] = [
     },
     description:
       "Apartment Ola to idealna propozycja odpoczynku dla par. W apartamencie czeka na Was stylowe wnętrze z akcentami folklorystycznymi, w pełni wyposażony aneks kuchenny z mikrofalówką i ekspresem kapsułkowym, rozkładana kanapa, telewizor z opcją Smart TV, przytulna sypialnia oraz łazienka z prysznicem. Proponujemy także wybór książek oraz gier, a także możliwość pozostawienia sprzętu narciarskiego w części wspólnej.",
-    basePrice: 360,
+    basePrice: 350,
     priceSpans: [
-      { startDate: parseDate('2025-10-01'), endDate: parseDate('2026-02-28'), price: 450 }, // High season override
-      { startDate: parseDate('2026-10-01'), endDate: parseDate('2027-02-28'), price: 450 }, // High season override
-      { startDate: parseDate('2027-10-01'), endDate: parseDate('2028-02-29'), price: 450 }, // High season override
-      { startDate: parseDate('2028-10-01'), endDate: parseDate('2029-02-28'), price: 450 }, // High season override
+      { startDate: parseDate("2025-10-01"), endDate: parseDate("2026-03-08"), price: 450 }, // High season override
+      { startDate: parseDate("2026-10-01"), endDate: parseDate("2027-03-08"), price: 450 }, // High season override
+      { startDate: parseDate("2027-10-01"), endDate: parseDate("2028-03-08"), price: 450 }, // High season override
+      { startDate: parseDate("2028-10-01"), endDate: parseDate("2029-03-08"), price: 450 }, // High season override
+      { startDate: parseDate("2029-10-01"), endDate: parseDate("2030-03-08"), price: 450 }, // High season override
     ],
     amenities: [
       {
@@ -59,7 +69,7 @@ export const apartments: Apartment[] = [
       {
         icon: BookOpen,
         title: "Książki i gry planszowe",
-      }
+      },
     ],
   },
   {
@@ -73,12 +83,13 @@ export const apartments: Apartment[] = [
     },
     description:
       "Apartament Ania sprawdzi się dla rodzin, które cenią sobie przestronne i komfortowe wnętrza. W apartamencie znajduje się łóżko dwuosobowe oraz osobna sypialnia z dwoma łóżkami jednoosobowymi. Do Waszej dyspozycji znajduje się w pełni wyposażona kuchnia wraz z mikrofalówką, ekspresem kapsułkowym, dwoma biurkami, telewizorem z opcją Smart TV oraz łazienką z prysznicem. W części wspólnej znajduje się narciarnia oraz kącik z książkami i grami. ",
-    basePrice: 400,
+    basePrice: 370,
     priceSpans: [
-      { startDate: parseDate('2025-10-01'), endDate: parseDate('2026-02-28'), price: 470 }, // High season override
-      { startDate: parseDate('2026-10-01'), endDate: parseDate('2027-02-28'), price: 470 }, // High season override
-      { startDate: parseDate('2027-10-01'), endDate: parseDate('2028-02-29'), price: 470 }, // High season override
-      { startDate: parseDate('2028-10-01'), endDate: parseDate('2029-02-28'), price: 470 }, // High season override
+      { startDate: parseDate("2025-10-01"), endDate: parseDate("2026-03-08"), price: 470 }, // High season override
+      { startDate: parseDate("2026-10-01"), endDate: parseDate("2027-03-08"), price: 470 }, // High season override
+      { startDate: parseDate("2027-10-01"), endDate: parseDate("2028-03-08"), price: 470 }, // High season override
+      { startDate: parseDate("2028-10-01"), endDate: parseDate("2029-03-08"), price: 470 }, // High season override
+      { startDate: parseDate("2029-10-01"), endDate: parseDate("2030-03-08"), price: 470 }, // High season override
     ],
     amenities: [
       {

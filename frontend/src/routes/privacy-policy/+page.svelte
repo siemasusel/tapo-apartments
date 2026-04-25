@@ -32,11 +32,11 @@
   <p>
     Administratorem danych osobowych jest TAPO Apartamenty Aleksandra Bisztyga z siedzibą przy ulicy Kraszewskiego 74,
     33-380 Krynica-Zdrój. Kontakt z administratorem jest możliwy za pośrednictwem adresu e-mail <a
-      href="mailto:{contactInformation.email}"
+      href={`mailto:${contactInformation.email}`}
       class="hover:underline">{contactInformation.email}</a
     >
     lub telefonicznie pod numerem
-    <a href="tel:{contactInformation.phone}" class="hover:underline">{contactInformation.phone}</a>. Administrator
+    <a href={`tel:${contactInformation.phone}`} class="hover:underline">{contactInformation.phone}</a>. Administrator
     danych nie powołał inspektora ochrony danych osobowych.
   </p>
 

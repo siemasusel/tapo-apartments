@@ -12,12 +12,12 @@
       <div class="mb-2 lg:mb-0">
         <h3 class="text-gray-400 font-medium mb-2 lg:mb-3">Kontakt</h3>
         <p class="mb-1.5">
-          <a href="tel:{contactInformation.phone}" class="hover:text-gray-100 transition-colors">
+          <a href={`tel:${contactInformation.phone}`} class="hover:text-gray-100 transition-colors">
             {contactInformation.phone}
           </a>
         </p>
         <p class="mb-1.5">
-          <a href="mailto:{contactInformation.email}" class="hover:text-gray-100 transition-colors">
+          <a href={`mailto:${contactInformation.email}`} class="hover:text-gray-100 transition-colors">
             {contactInformation.email}
           </a>
         </p>

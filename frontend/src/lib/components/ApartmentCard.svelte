@@ -17,9 +17,9 @@
       format: "webp",
     },
     eager: true,
-  });
+  }) as Record<string, { default: { img: { src: string } } }>;
 
-  $: imagePath = images[`/src/lib/assets/gallery/${apartment.slug}/1.jpg`].default.img.src as string;
+  $: imagePath = images[`/src/lib/assets/gallery/${apartment.slug}/1.jpg`]?.default.img.src ?? "";
 
   const price = getApartmentPriceForDate(apartment, today(getLocalTimeZone()));
 </script>
@@ -104,7 +104,7 @@
     <div class={`mt-4 flex space-x-4 justify-center ${isEven ? "lg:justify-end" : "lg:justify-start"}`}>
       <div class="flex space-x-4">
         <a
-          href="/apartments/{apartment.slug}"
+          href={`/apartments/${apartment.slug}`}
           class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-dark transition-colors duration-300 justify-self-end"
         >
           Więcej

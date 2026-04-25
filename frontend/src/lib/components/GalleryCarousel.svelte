@@ -16,6 +16,10 @@
     img: { src: string; w: number; h: number };
   }
 
+  type GalleryImageModule = {
+    default: ImageMetadata;
+  };
+
   const allImages = import.meta.glob("/src/lib/assets/gallery/**/*.{jpg,png,webp}", {
     query: {
       enhanced: true,
@@ -23,7 +27,7 @@
       format: "webp",
     },
     eager: true,
-  });
+  }) as Record<string, GalleryImageModule>;
 
   let filteredImages: (ImageMetadata & { isVertical: boolean })[] = Object.entries(allImages ?? {})
     .filter(([path]) => {
@@ -98,7 +102,7 @@
   }
 </script>
 
-<Splide id={galleryId} class="pswp-gallery" options={splideOptions} aria-label="Zdjęcie dla apartamentu {slug}">
+<Splide id={galleryId} class="pswp-gallery" options={splideOptions} aria-label={`Zdjęcia dla apartamentu ${slug}`}>
   {#each filteredImages as imgData, i}
     {@const mainSrc = getMainSrc(imgData)}
     {@const gridImgSrc = getGridImageUrl(imgData)}

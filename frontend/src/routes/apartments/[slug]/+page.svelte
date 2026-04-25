@@ -19,10 +19,10 @@
 
   <meta
     name="description"
-    content="Wynajmij apartament '{apartmentName}' w TAPO Apartamenty, Krynica-Zdrój. {metaDescription} Zarezerwuj online!"
+    content={`Wynajmij apartament '${apartmentName}' w TAPO Apartamenty, Krynica-Zdrój. ${metaDescription} Zarezerwuj online!`}
   />
 
-  <meta property="og:title" content="{apartment.title} | TAPO Apartamenty Krynica-Zdrój" />
+  <meta property="og:title" content={`${apartment.title} | TAPO Apartamenty Krynica-Zdrój`} />
   <meta property="og:description" content={metaDescription} />
   <meta property="og:type" content="article" />
   <meta property="og:url" content={canonicalUrl} />
