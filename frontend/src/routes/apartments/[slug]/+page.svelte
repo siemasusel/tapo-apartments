@@ -9,8 +9,10 @@
   const apartment = $derived(data.apartment);
 
   const apartmentName = $derived(apartment.slug.charAt(0).toUpperCase() + apartment.slug.slice(1));
-  const metaDescription = $derived(`Komfortowy apartament ${apartmentName} w Krynicy-Zdroju. Idealny na wakacje lub weekend.`);
-  const canonicalUrl = page.url.href;
+  const metaDescription = $derived(
+    `Komfortowy apartament ${apartmentName} w Krynicy-Zdroju. Idealny na wakacje lub weekend.`,
+  );
+  const canonicalUrl = `${page.url.origin}${page.url.pathname}`;
   const ogImageUrl = $derived(`${page.url.origin}/images/og-${apartment.slug}.jpg`);
 </script>
 

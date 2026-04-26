@@ -28,7 +28,13 @@
 <div class="flex flex-col lg:flex-row w-full overflow-hidden min-h-[350px]">
   <!-- Image Section (60% of the card) -->
   <div class={`w-full lg:w-3/5 ${isEven ? "lg:order-last" : "lg:order-first"}`}>
-    <img src={imagePath} alt={apartment.title} class="w-full h-full object-cover rounded-t-xl lg:rounded-xl" />
+    <img
+      src={imagePath}
+      alt={apartment.title}
+      loading="lazy"
+      decoding="async"
+      class="w-full h-full object-cover rounded-t-xl lg:rounded-xl"
+    />
   </div>
 
   <!-- Information Section (40% of the card) -->

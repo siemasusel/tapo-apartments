@@ -8,6 +8,7 @@
           src="$lib/assets/hero-image.jpg?w=1440;768"
           sizes="(min-width:1440px) 1440px, (min-width:768px) 768px"
           alt="Apartamenty w Krynicy Zdrój"
+          fetchpriority="high"
           class="w-full h-[450px] md:h-[500px] lg:h-[700px] object-cover object-center"
         />
 

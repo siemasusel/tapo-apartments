@@ -14,7 +14,7 @@
     <div class="w-full lg:w-1/2 h-96">
       <iframe
         src={googleMapsEmbedUrl}
-        title="Apartment location"
+        title="Lokalizacja TAPO Apartamenty na mapie"
         width="100%"
         height="100%"
         style="border:0;"
@@ -63,7 +63,9 @@
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Telefon</h3>
-          <a href={`tel:${contactInformation.phone}`} class="text-white hover:underline">{contactInformation.phone}</a>
+          <a href={`tel:${contactInformation.phone.replaceAll(" ", "")}`} class="text-white hover:underline">
+            {contactInformation.phone}
+          </a>
         </div>
       </div>
     </div>

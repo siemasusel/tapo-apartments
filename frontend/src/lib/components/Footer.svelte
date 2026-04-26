@@ -12,7 +12,7 @@
       <div class="mb-2 lg:mb-0">
         <h3 class="text-gray-400 font-medium mb-2 lg:mb-3">Kontakt</h3>
         <p class="mb-1.5">
-          <a href={`tel:${contactInformation.phone}`} class="hover:text-gray-100 transition-colors">
+          <a href={`tel:${contactInformation.phone.replaceAll(" ", "")}`} class="hover:text-gray-100 transition-colors">
             {contactInformation.phone}
           </a>
         </p>
@@ -47,6 +47,8 @@
             href="https://www.instagram.com/tapo.apartamenty?igsh=a2VqcjdqbnRuOGZn"
             class="inline-flex items-center hover:text-gray-100 transition-colors"
             aria-label="Instagram"
+            target="_blank"
+            rel="noreferrer"
           >
             <svg viewBox="0 0 24 24" class="size-8 fill-current" aria-hidden="true">
               <path d={siInstagram.path}></path>
@@ -56,6 +58,8 @@
             href="https://www.facebook.com/profile.php?id=61579311782902"
             class="inline-flex items-center hover:text-gray-100 transition-colors"
             aria-label="Facebook"
+            target="_blank"
+            rel="noreferrer"
           >
             <svg viewBox="0 0 24 24" class="size-8 fill-current" aria-hidden="true">
               <path d={siFacebook.path}></path>

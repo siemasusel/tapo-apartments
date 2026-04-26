@@ -8,7 +8,7 @@
   let { data }: PageProps = $props();
 
   const metaDescription = `Komfortowe apartamenty w Krynicy-Zdroju. Idealny na wakacje lub weekend.`;
-  const canonicalUrl = page.url.href;
+  const canonicalUrl = `${page.url.origin}${page.url.pathname}`;
   const ogImageUrl = `${page.url.origin}/images/og-main.jpg`;
 </script>
 

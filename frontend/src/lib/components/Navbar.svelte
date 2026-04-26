@@ -95,6 +95,7 @@
   ];
 
   let isOpen = false;
+  const mobileMenuId = "mobile-navigation";
 </script>
 
 <nav
@@ -134,9 +135,12 @@
     <!-- Mobile Menu Button & Reservation Button Container -->
     <div class="flex items-center justify-end lg:justify-center gap-4">
       <button
+        type="button"
         class="lg:hidden p-2 focus:outline-none ml-1"
         on:click={() => (isOpen = !isOpen)}
-        aria-label="Menu toggle"
+        aria-controls={mobileMenuId}
+        aria-expanded={isOpen}
+        aria-label={isOpen ? "Zamknij menu" : "Otwórz menu"}
       >
         <svg
           class="size-9 text-black"
@@ -188,7 +192,7 @@
 
     <!-- Mobile Menu Dropdown -->
     {#if isOpen}
-      <div class="lg:hidden absolute top-full left-0 w-full bg-white shadow-md py-4">
+      <div id={mobileMenuId} class="lg:hidden absolute top-full left-0 w-full bg-white shadow-md py-4">
         <ul class="flex flex-col items-center space-y-4">
           {#each menuItems as item}
             <li>

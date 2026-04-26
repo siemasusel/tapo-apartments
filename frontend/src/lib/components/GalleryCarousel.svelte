@@ -58,6 +58,7 @@
       },
     },
     padding: "none",
+    focusableNodes: "a",
     // pagination: false,
     // height: "333px",
   };
@@ -75,6 +76,10 @@
       pswpModule: () => import("photoswipe"),
     });
     lightbox.init();
+
+    return () => {
+      lightbox.destroy();
+    };
   });
 
   // --- Helper Functions ---
@@ -120,6 +125,8 @@
           <img
             src={gridImgSrc}
             alt={"Zdjęcie " + (i + 1)}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
             class="block object-cover h-full w-full rounded-xl transition-all duration-300"
           />
           <!-- Hover overlay -->

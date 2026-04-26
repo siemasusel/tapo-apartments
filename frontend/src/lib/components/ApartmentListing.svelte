@@ -50,6 +50,8 @@
   <img
     src={imagePath}
     alt={apartment.title}
+    loading="lazy"
+    decoding="async"
     class="absolute inset-0 h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
   />
 

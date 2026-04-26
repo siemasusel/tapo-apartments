@@ -29,7 +29,7 @@
     }
   });
 
-  const canonicalUrl = page.url.href;
+  const canonicalUrl = `${page.url.origin}${page.url.pathname}`;
   const ogImageUrl = `${page.url.origin}/images/og-main.jpg`;
 </script>
 
