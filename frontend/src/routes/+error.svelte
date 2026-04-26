@@ -21,7 +21,7 @@
         Strona, której szukasz, mogła zostać usunięta, zmienić nazwę lub jest tymczasowo niedostępna.
       </p>
     {:else}
-      <p class="text-lg md:text-xl text-gray-600 mb-8">Coś poszło nie tak po naszej stronie. Pracujemy nad naprawą!</p>
+      <p class="text-lg md:text-xl text-gray-600 mb-8">{errorMessage}</p>
     {/if}
     <a
       href="/"

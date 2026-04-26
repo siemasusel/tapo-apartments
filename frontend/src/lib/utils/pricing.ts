@@ -23,7 +23,7 @@ export function getApartmentPriceForDate(apartment: Apartment, date: DateValue):
 
 export function calculateTotalPrice(apartment: Apartment, checkInDate: DateValue, checkOutDate: DateValue): number {
   let totalPrice = 0;
-  let currentDate = toDate(checkInDate.toDate(getLocalTimeZone()));
+  const currentDate = toDate(checkInDate.toDate(getLocalTimeZone()));
   const endDate = toDate(checkOutDate.toDate(getLocalTimeZone()));
 
   // Ensure check-out is after check-in

@@ -1,5 +1,5 @@
 <script>
-  let { class: className = "", ...restProps } = $props(); // Pass other props too
+  let { class: className = "" } = $props();
 </script>
 
 <svg

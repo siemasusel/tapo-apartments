@@ -4,7 +4,6 @@
   import FaqSection from "./FAQSection.svelte";
   import ApartmentCalendar from "./ApartmentCalendar.svelte";
   import { Separator } from "bits-ui";
-  import { getLocalTimeZone, today } from "@internationalized/date";
   let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
 
   const half = $derived(Math.ceil(apartment.amenities.length / 2));
