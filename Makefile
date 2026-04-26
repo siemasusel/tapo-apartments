@@ -17,7 +17,7 @@ COMPOSE_FILE = $(COMPOSE_DIR)/docker-compose.yml
 DYNAMODB_ENDPOINT = http://localhost:8001
 TABLE_NAME = ApartmentsData
 
-.PHONY: all sync invalidate deploy-frontend deploy-backend terraform terraform-plan build-frontend run-frontend build-backend run-backend generate clean_generated_dir clean help
+.PHONY: all sync invalidate deploy-frontend deploy-backend terraform terraform-plan build-frontend run-frontend build-backend run-backend generate clean_generated_dir clean help terraform-bootstrap terraform-init-remote
 
 # Default action
 all: deploy
@@ -73,6 +73,14 @@ terraform-apply:
 		-var="tapo_ola_calendar_url=$${TAPO_OLA_CALENDAR_URL}" \
 		-var="tapo_ania_calendar_url=$${TAPO_ANIA_CALENDAR_URL}" \
 		-var="tapo_admin_api_key=$${TAPO_ADMIN_API_KEY}"
+
+.PHONY: terraform-bootstrap
+terraform-bootstrap:
+	cd terraform/bootstrap && terraform init && terraform apply
+
+.PHONY: terraform-init-remote
+terraform-init-remote:
+	cd terraform && terraform init -migrate-state -backend-config=backend.hcl
 
 
 # Generate Go structures from OpenAPI spec using Docker

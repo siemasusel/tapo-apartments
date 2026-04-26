@@ -8,9 +8,9 @@ resource "aws_apigatewayv2_api" "backend_http_api" {
   # For Lambda integrations, you often want to enable CORS here
   # This is a basic example; adjust as needed for your frontend.
   cors_configuration {
-    allow_methods = ["*"] # Adjust to specific methods like ["GET", "POST"]
-    allow_headers = ["*"] # Adjust to specific headers
-    allow_origins = ["*"] # VERY IMPORTANT: Change this to your frontend's domain in production!
+    allow_methods = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    allow_headers = ["content-type", "x-api-key", "authorization"]
+    allow_origins = var.cors_allowed_origins
     max_age       = 300
   }
 

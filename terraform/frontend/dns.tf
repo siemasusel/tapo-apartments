@@ -16,6 +16,19 @@ resource "aws_route53_record" "naked_domain_alias" {
   }
 }
 
+resource "aws_route53_record" "naked_domain_alias_ipv6" {
+  count   = 1
+  zone_id = var.hosted_zone_id
+  name    = var.root_domain_name
+  type    = "AAAA"
+
+  alias {
+    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
 # A record for the www subdomain (e.g., www.tapoapartamenty.pl)
 # This also uses an ALIAS record to point to your CloudFront distribution.
 resource "aws_route53_record" "www_domain_alias" {
@@ -23,6 +36,19 @@ resource "aws_route53_record" "www_domain_alias" {
   zone_id = var.hosted_zone_id
   name    = "www.${var.root_domain_name}" # e.g., "www.tapoapartamenty.pl"
   type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "www_domain_alias_ipv6" {
+  count   = 1
+  zone_id = var.hosted_zone_id
+  name    = "www.${var.root_domain_name}"
+  type    = "AAAA"
 
   alias {
     name                   = aws_cloudfront_distribution.s3_distribution.domain_name

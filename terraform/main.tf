@@ -20,8 +20,8 @@ module "backend" {
   aws_account_id         = data.aws_caller_identity.current.account_id
   root_domain_name       = var.root_domain_name
   hosted_zone_id         = module.common.hosted_zone_id
+  cors_allowed_origins   = var.cors_allowed_origins
   tapo_ola_calendar_url  = var.tapo_ola_calendar_url
   tapo_ania_calendar_url = var.tapo_ania_calendar_url
   tapo_admin_api_key     = var.tapo_admin_api_key
 }
-

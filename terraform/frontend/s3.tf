@@ -1,9 +1,3 @@
-# Create a CloudFront Origin Access Identity (OAI)
-# This allows CloudFront to securely access the S3 bucket content
-resource "aws_cloudfront_origin_access_identity" "oai" {
-  comment = "OAI for ${var.project_name}"
-}
-
 # Create the S3 bucket to store the static website files
 resource "aws_s3_bucket" "site_bucket" {
   # Bucket names must be globally unique
@@ -32,15 +26,29 @@ resource "aws_s3_bucket_public_access_block" "site_bucket_pab" {
   restrict_public_buckets = true
 }
 
-# Define the S3 bucket policy to allow read access from the CloudFront OAI
+# Legacy OAI kept as an unmanaged compatibility placeholder during migration.
+# It is no longer referenced by CloudFront, but keeping the Terraform resource
+# avoids delete-time conflicts while CloudFront fully detaches from it.
+resource "aws_cloudfront_origin_access_identity" "oai" {
+  comment = "OAI for ${var.project_name}"
+}
+
+# Define the S3 bucket policy to allow read access from the CloudFront distribution via OAC
 data "aws_iam_policy_document" "s3_policy" {
   statement {
+    sid       = "AllowCloudFrontServicePrincipalReadOnly"
     actions   = ["s3:GetObject"]
     resources = ["${aws_s3_bucket.site_bucket.arn}/*"] # Allow access to all objects in the bucket
 
     principals {
-      type        = "AWS"
-      identifiers = [aws_cloudfront_origin_access_identity.oai.iam_arn]
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.s3_distribution.arn]
     }
   }
 }
@@ -50,4 +58,3 @@ resource "aws_s3_bucket_policy" "site_bucket_policy" {
   bucket = aws_s3_bucket.site_bucket.id
   policy = data.aws_iam_policy_document.s3_policy.json
 }
-

@@ -40,7 +40,6 @@ resource "aws_iam_policy" "lambda_logs_policy" {
       },
       {
         Action = [
-          "dynamodb:CreateTable",
           "dynamodb:GetItem",
           "dynamodb:PutItem",
           "dynamodb:BatchGetItem", # For reading ranges (multiple items)

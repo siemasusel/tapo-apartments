@@ -24,7 +24,7 @@ resource "aws_lambda_function" "backend_api_lambda" {
   s3_bucket     = aws_s3_object.lambda_code.bucket
   s3_key        = aws_s3_object.lambda_code.key
   handler       = "bootstrap"    # Name of your compiled Go binary (must match -o flag in go build)
-  runtime       = "provided.al2" # Recommended runtime for Go
+  runtime       = "provided.al2023"
   role          = aws_iam_role.lambda_execution_role.arn
   timeout       = 30  # seconds
   memory_size   = 128 # MB

@@ -1,3 +1,11 @@
+resource "aws_cloudfront_origin_access_control" "site_bucket_oac" {
+  name                              = "${var.project_name}-site-bucket-oac"
+  description                       = "Origin access control for ${var.project_name} site bucket"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
 # Create the CloudFront distribution
 resource "aws_cloudfront_distribution" "s3_distribution" {
   enabled             = true
@@ -10,10 +18,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = aws_s3_bucket.site_bucket.bucket_regional_domain_name
     origin_id   = "S3-${aws_s3_bucket.site_bucket.id}"
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
-    }
+    origin_access_control_id = aws_cloudfront_origin_access_control.site_bucket_oac.id
   }
 
   # =========================================================================
@@ -96,6 +101,4 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     Project     = var.project_name
     Environment = "production"
   }
-
-  depends_on = [aws_s3_bucket_policy.site_bucket_policy]
 }

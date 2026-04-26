@@ -29,6 +29,10 @@ variable "hosted_zone_id" {
   type        = string
 }
 
+variable "cors_allowed_origins" {
+  description = "Allowed browser origins for the backend HTTP API CORS policy."
+  type        = list(string)
+}
 
 variable "tapo_ola_calendar_url" {
   type      = string
@@ -44,4 +48,3 @@ variable "tapo_admin_api_key" {
   type      = string
   sensitive = true
 }
-
