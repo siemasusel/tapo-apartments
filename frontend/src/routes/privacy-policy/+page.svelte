@@ -3,7 +3,7 @@
   import type { PageProps } from "./$types";
 
   let { data }: PageProps = $props();
-  let { contactInformation } = data;
+  const contactInformation = $derived(data.contactInformation);
 
   const canonicalUrl = page.url.href;
   const ogImageUrl = `${page.url.origin}/images/og-main.jpg`;

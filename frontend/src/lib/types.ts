@@ -1,5 +1,5 @@
-import { type Icon as IconType } from '@lucide/svelte';
-import type { IconNode } from 'lucide-svelte';
+import { type Icon as IconType } from "@lucide/svelte";
+import type { IconNode } from "@lucide/svelte";
 import type { DateValue } from "@internationalized/date";
 
 export interface BedConfiguration {

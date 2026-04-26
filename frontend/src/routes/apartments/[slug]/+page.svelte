@@ -6,12 +6,12 @@
   import type { PageData } from "./$types";
 
   let { data }: { data: PageData } = $props();
-  const { apartment } = data;
+  const apartment = $derived(data.apartment);
 
-  const apartmentName = apartment.slug.charAt(0).toUpperCase() + apartment.slug.slice(1);
-  const metaDescription = `Komfortowy apartament ${apartmentName} w Krynicy-Zdroju. Idealny na wakacje lub weekend.`;
+  const apartmentName = $derived(apartment.slug.charAt(0).toUpperCase() + apartment.slug.slice(1));
+  const metaDescription = $derived(`Komfortowy apartament ${apartmentName} w Krynicy-Zdroju. Idealny na wakacje lub weekend.`);
   const canonicalUrl = page.url.href;
-  const ogImageUrl = `${page.url.origin}/images/og-${apartment.slug}.jpg`;
+  const ogImageUrl = $derived(`${page.url.origin}/images/og-${apartment.slug}.jpg`);
 </script>
 
 <svelte:head>

@@ -5,7 +5,7 @@
   import type { LayoutProps } from "./$types";
 
   let { data, children }: LayoutProps = $props();
-  let { contactInformation } = data;
+  const contactInformation = $derived(data.contactInformation);
 </script>
 
 <div class="min-h-screen flex flex-col bg-white font-primary">

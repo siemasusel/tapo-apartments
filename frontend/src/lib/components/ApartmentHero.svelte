@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Apartment } from "$lib/types";
-  import { BedDouble, BedSingle, CookingPot, Info, ShowerHead, Sofa, Users } from "lucide-svelte";
+  import { BedDouble, BedSingle, CookingPot, Info, ShowerHead, Sofa, Users } from "@lucide/svelte";
   import GalleryCarousel from "./GalleryCarousel.svelte";
   import { Popover } from "bits-ui";
   import { getApartmentPriceForDate } from "$lib/utils/pricing";
@@ -8,9 +8,10 @@
 
   let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
 
-  const { slug, beds, capacity } = apartment;
-
-  const price = getApartmentPriceForDate(apartment, today(getLocalTimeZone()));
+  const slug = $derived(apartment.slug);
+  const beds = $derived(apartment.beds);
+  const capacity = $derived(apartment.capacity);
+  const price = $derived(getApartmentPriceForDate(apartment, today(getLocalTimeZone())));
 </script>
 
 <div class="space-y-6 rounded-t-xl">

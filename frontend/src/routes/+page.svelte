@@ -7,7 +7,8 @@
   import type { PageProps } from "./$types";
 
   let { data }: PageProps = $props();
-  let { contactInformation, apartments } = data;
+  const contactInformation = $derived(data.contactInformation);
+  const apartments = $derived(data.apartments);
 
   import { onMount } from "svelte";
   import SectionTitle from "$lib/components/SectionTitle.svelte";

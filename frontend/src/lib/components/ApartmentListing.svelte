@@ -24,11 +24,11 @@
     eager: true,
   }) as Record<string, ImageModule>;
 
-  const imageKey = `/src/lib/assets/gallery/${apartment.slug}/1.jpg`;
-  const imageModule = images[imageKey];
+  const imageKey = $derived(`/src/lib/assets/gallery/${apartment.slug}/1.jpg`);
+  const imageModule = $derived(images[imageKey]);
   const imagePath = $derived(imageModule?.default.img.src ?? "");
 
-  const price = getApartmentPriceForDate(apartment, today(getLocalTimeZone()));
+  const price = $derived(getApartmentPriceForDate(apartment, today(getLocalTimeZone())));
 </script>
 
 {#snippet IconInfo(Icon: typeof IconType, value: string | number)}

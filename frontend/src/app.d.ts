@@ -10,4 +10,6 @@ declare global {
 	}
 }
 
+declare module "@splidejs/svelte-splide/css/splide.min.css";
+
 export {};

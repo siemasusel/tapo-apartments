@@ -1,10 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { Maximize2 } from "lucide-svelte";
+  import { Maximize2 } from "@lucide/svelte";
   // Splide imports
   import { Splide, SplideSlide, type Options } from "@splidejs/svelte-splide";
-  import "@splidejs/svelte-splide/css";
+  import "@splidejs/svelte-splide/css/splide.min.css";
   // PhotoSwite imports
   import PhotoSwipeLightbox from "photoswipe/lightbox";
   import "photoswipe/style.css";

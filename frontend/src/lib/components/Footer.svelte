@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Facebook, Instagram } from "@lucide/svelte";
+  import { siFacebook, siInstagram } from "simple-icons";
   import type { ContactInformation } from "$lib/types";
 
   export let contactInformation: ContactInformation;
@@ -42,18 +42,24 @@
       <!-- Social & Legal -->
       <div>
         <h3 class="text-gray-400 font-medium mb-2 lg:mb-3">Obserwuj nas</h3>
-        <div class="flex justify-center lg:justify-start space-x-3 mb-2">
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-2">
           <a
             href="https://www.instagram.com/tapo.apartamenty?igsh=a2VqcjdqbnRuOGZn"
-            class="hover:text-gray-100 transition-colors"
+            class="inline-flex items-center hover:text-gray-100 transition-colors"
+            aria-label="Instagram"
           >
-            <Instagram class="size-8" />
+            <svg viewBox="0 0 24 24" class="size-8 fill-current" aria-hidden="true">
+              <path d={siInstagram.path}></path>
+            </svg>
           </a>
           <a
             href="https://www.facebook.com/profile.php?id=61579311782902"
-            class="hover:text-gray-100 transition-colors"
+            class="inline-flex items-center hover:text-gray-100 transition-colors"
+            aria-label="Facebook"
           >
-            <Facebook class="size-8" />
+            <svg viewBox="0 0 24 24" class="size-8 fill-current" aria-hidden="true">
+              <path d={siFacebook.path}></path>
+            </svg>
           </a>
         </div>
       </div>

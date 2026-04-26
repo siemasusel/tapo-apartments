@@ -7,9 +7,9 @@
   import { getLocalTimeZone, today } from "@internationalized/date";
   let { apartment }: { apartment: Apartment } = $props<{ apartment: Apartment }>();
 
-  const half = Math.ceil(apartment.amenities.length / 2);
-  const leftColumn = apartment.amenities.slice(0, half);
-  const rightColumn = apartment.amenities.slice(half);
+  const half = $derived(Math.ceil(apartment.amenities.length / 2));
+  const leftColumn = $derived(apartment.amenities.slice(0, half));
+  const rightColumn = $derived(apartment.amenities.slice(half));
 </script>
 
 <div class="space-y-12 py-12">

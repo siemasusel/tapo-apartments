@@ -8,7 +8,7 @@
 
   import { Popover } from "bits-ui";
 
-  import { Users, BedDouble, BedSingle, Sofa, Info } from "lucide-svelte";
+  import { Users, BedDouble, BedSingle, Sofa, Info } from "@lucide/svelte";
 
   const images = import.meta.glob("/src/lib/assets/gallery/**/1.jpg", {
     query: {

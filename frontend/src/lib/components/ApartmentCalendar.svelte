@@ -7,7 +7,7 @@
   import { getApartmentPriceForDate } from "$lib/utils/pricing";
   import { Skeleton } from "./ui/skeleton";
   import type { Apartment } from "$lib/types";
-  import { swipe, type SwipeCustomEvent } from "svelte-gestures";
+  import { useSwipe, type SwipeCustomEvent } from "svelte-gestures";
 
   let unavailableDates: Array<DateValue> = $state([]);
   let isLoading = $state(true);
@@ -30,6 +30,11 @@
       prevButton.click();
     }
   };
+
+  const swipeGesture = useSwipe(
+    handleSwipe,
+    () => ({ timeframe: 500, minSwipeDistance: 60, touchAction: "pan-y" }),
+  );
 
   // Load unavailable dates and update number of months
   onMount(() => {
@@ -99,11 +104,7 @@
     <p class="text-red-500">Problem z wczytaniem kalendarza - spróbuj ponownie za chwilę.</p>
   {:else}
     {#key numberOfMonths}
-      <div
-        use:swipe={() => ({ timeframe: 500, minSwipeDistance: 60, touchAction: "pan-y" })}
-        onswipe={handleSwipe}
-        class="flex w-full rounded-lg"
-      >
+      <div {...swipeGesture} class="flex w-full rounded-lg">
         <Calendar.Root
           class="rounded-[15px] border border-gray-200 bg-white p-4 shadow-md w-full"
           weekdayFormat="short"

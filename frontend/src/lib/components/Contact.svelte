@@ -1,8 +1,11 @@
 <script lang="ts">
-  import { Mail, Phone, MapPinHouse } from "lucide-svelte";
+  import { Mail, Phone, MapPinHouse } from "@lucide/svelte";
   import type { ContactInformation } from "$lib/types";
 
   export let contactInformation: ContactInformation;
+
+  const googleMapsEmbedUrl =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.979335785365!2d20.951532977640973!3d49.40929646177854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x826fd87bd3325c8b%3A0xd7b6662a5e30b256!2sTAPO%20Apartamenty!5e0!3m2!1spl!2spl!4v1777229234342!5m2!1spl!2spl";
 </script>
 
 <div class="container mx-auto py-8 md:py-12">
@@ -10,7 +13,7 @@
     <!-- Left Side - Google Map -->
     <div class="w-full lg:w-1/2 h-96">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.979520354412!2d20.951532976637672!3d49.409292971412135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473e763c9cf2bd33%3A0xcb614eddf6d56865!2sJ.%20I.%20Kraszewskiego%2074%2C%2033-380%20Krynica-Zdr%C3%B3j!5e0!3m2!1sen!2spl!4v1741714115799!5m2!1sen!2spl"
+        src={googleMapsEmbedUrl}
         title="Apartment location"
         width="100%"
         height="100%"
@@ -47,7 +50,9 @@
         </div>
         <div>
           <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
-          <a href={`mailto:${contactInformation.email}`} class="text-white hover:underline">{contactInformation.email}</a>
+          <a href={`mailto:${contactInformation.email}`} class="text-white hover:underline"
+            >{contactInformation.email}</a
+          >
         </div>
       </div>
 
